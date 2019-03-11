@@ -15,7 +15,6 @@ variables:
 
 
 steps:
-- script: cd WebApp
-  displayName: 'Into folder)'
 - script: dotnet build --configuration $(buildConfiguration)
+  workingDirectory: $(Build.SourcesDirectory)/WebApp
   displayName: 'dotnet build $(buildConfiguration)'
