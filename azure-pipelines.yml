@@ -15,7 +15,6 @@ variables:
 
 
 steps:
-- script: cd $(Build.SourcesDirectory)/WebApp
-  displayName: 'Get into folder'
 - script: dir
+  workingDirectory: $(Build.SourcesDirectory)/WebApp
   displayName: 'Display contents'
