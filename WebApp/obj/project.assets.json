@@ -5796,19 +5796,19 @@
       ]
     },
     "Microsoft.CodeAnalysis.Analyzers/1.1.0": {
-      "sha512": "HS3iRWZKcUw/8eZ/08GXKY2Bn7xNzQPzf8gRPHGSowX7u7XXu9i9YEaBeBNKUXWfI7qjvT2zXtLUvbN0hds8vg==",
+      "sha512": "jAh/uJzjJTQRss1TdtH/yqR3P/E3WjSlU4qRzVoT//giTDqrl3moiAjB2Oxla62NX0wnJnPwUkTo8nyAs+FCow==",
       "type": "package",
       "path": "microsoft.codeanalysis.analyzers/1.1.0",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
+        "Microsoft.CodeAnalysis.Analyzers.1.1.0.nupkg.sha512",
+        "Microsoft.CodeAnalysis.Analyzers.nuspec",
         "ThirdPartyNotices.rtf",
         "analyzers/dotnet/cs/Microsoft.CodeAnalysis.Analyzers.dll",
         "analyzers/dotnet/cs/Microsoft.CodeAnalysis.CSharp.Analyzers.dll",
         "analyzers/dotnet/vb/Microsoft.CodeAnalysis.Analyzers.dll",
         "analyzers/dotnet/vb/Microsoft.CodeAnalysis.VisualBasic.Analyzers.dll",
-        "microsoft.codeanalysis.analyzers.1.1.0.nupkg.sha512",
-        "microsoft.codeanalysis.analyzers.nuspec",
         "tools/install.ps1",
         "tools/uninstall.ps1"
       ]
@@ -8322,7 +8322,6 @@
       "path": "system.diagnostics.contracts/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -9356,11 +9355,13 @@
       ]
     },
     "System.Linq.Queryable/4.0.1": {
-      "sha512": "Yn/WfYe9RoRfmSLvUt2JerP0BTGGykCZkQPgojaxgzF2N0oPo+/AhB8TXOpdCcNlrG3VRtsamtK2uzsp3cqRVw==",
+      "sha512": "dDRZyPf1q4Kc/Sd9jrQSqAkh8if8T9fPdpw4mTfcTfR/4LHQ19DXNIm+1ZoFwjHAPEWT9hydzi6EImN09HOTkg==",
       "type": "package",
       "path": "system.linq.queryable/4.0.1",
       "files": [
         ".nupkg.metadata",
+        "System.Linq.Queryable.4.0.1.nupkg.sha512",
+        "System.Linq.Queryable.nuspec",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/monoandroid10/_._",
@@ -9408,9 +9409,7 @@
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "system.linq.queryable.4.0.1.nupkg.sha512",
-        "system.linq.queryable.nuspec"
+        "ref/xamarinwatchos10/_._"
       ]
     },
     "System.Memory/4.5.1": {
@@ -12222,23 +12221,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Vilius\\.nuget\\packages\\": {},
+    "C:\\Users\\Dovydas\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.4",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Vilius\\Documents\\GitHub\\NFC-lecture-attendance-system\\WebApp\\NFCSystem.csproj",
+      "projectUniqueName": "c:\\Users\\Dovydas\\Documents\\4_Semestras\\Semestro_Projektas\\new login\\NFC-lecture-attendance-system\\WebApp\\NFCSystem.csproj",
       "projectName": "NFCSystem",
-      "projectPath": "C:\\Users\\Vilius\\Documents\\GitHub\\NFC-lecture-attendance-system\\WebApp\\NFCSystem.csproj",
-      "packagesPath": "C:\\Users\\Vilius\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Vilius\\Documents\\GitHub\\NFC-lecture-attendance-system\\WebApp\\obj\\",
+      "projectPath": "c:\\Users\\Dovydas\\Documents\\4_Semestras\\Semestro_Projektas\\new login\\NFC-lecture-attendance-system\\WebApp\\NFCSystem.csproj",
+      "packagesPath": "C:\\Users\\Dovydas\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\Dovydas\\Documents\\4_Semestras\\Semestro_Projektas\\new login\\NFC-lecture-attendance-system\\WebApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Vilius\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Dovydas\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

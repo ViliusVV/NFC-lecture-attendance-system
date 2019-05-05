@@ -8,8 +8,8 @@
 #define SPEAKER         (25)
 
 // WiFi settings
-#define SSID            "DESKTOP-A4GI4HB"
-#define PASSWD          "bigbang123"
+// #define SSID            "DESKTOP-A4GI4HB"
+// #define PASSWD          "bigbang123"
 // #define SSID               "Redmi111"
 // #define PASSWD             "abcabc123"
 // #define SSID               "OnePlus 5"

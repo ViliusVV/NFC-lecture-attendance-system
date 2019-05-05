@@ -1,2 +1,2 @@
 # NFC-lecture-attendance-system
-Semeseter project.
+Semester project.
