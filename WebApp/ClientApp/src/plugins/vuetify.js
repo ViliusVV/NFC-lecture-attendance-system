@@ -23,8 +23,12 @@ import {
   VDatePicker,
   VMenu,
   VSelect,
+  VAutocomplete,
+  VAvatar,
+  VChip,
 } from 'vuetify'
 import 'vuetify/src/stylus/app.styl'
+import lt from './lt-locale'
 
 Vue.use(Vuetify, {
   components: {
@@ -50,6 +54,9 @@ Vue.use(Vuetify, {
     VMenu,
     VDatePicker,
     VSheet,
+    VAutocomplete,
+    VAvatar,
+    VChip,
   },
   theme: {
     primary: '#1976D2',
@@ -59,5 +66,8 @@ Vue.use(Vuetify, {
     info: '#2196F3',
     success: '#4CAF50',
     warning: '#FFC107'
+  },
+  lang: {
+    locales: { lt }
   },
 })

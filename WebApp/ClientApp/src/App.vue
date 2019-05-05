@@ -3,7 +3,7 @@
 
     <v-navigation-drawer v-if="isLoggedIn()" persistent :mini-variant="miniVariant" :clipped="clipped" v-model="drawer" enable-resize-watcher fixed app>
       <v-list>
-        <v-list-tile value="true" v-for="(item, i) in items" :key="i" :to="item.link">
+        <v-list-tile value="true" v-for="(item, i) in items()" :key="i" :to="item.link">
           <v-list-tile-action>
             <v-icon v-html="item.icon"></v-icon>
           </v-list-tile-action>
@@ -26,9 +26,16 @@
       <v-spacer></v-spacer>
       <Registration v-if="!isLoggedIn()" right/>
       <DialogTest v-if="!isLoggedIn()" right/>
+      <v-chip v-if="isLoggedIn()" color="indigo" text-color="white">
+        <v-avatar>
+          <v-icon>account_circle</v-icon>
+        </v-avatar>
+        {{ myRole() }}
+      </v-chip>
       <v-btn v-if="isLoggedIn()" icon @click.stop="logout">
         <v-icon>exit_to_app</v-icon>
       </v-btn>
+
     </v-toolbar>
 
     <v-content>
@@ -47,6 +54,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import DialogTest from './views/DialogTest.vue'; // @ is an alias to /src
 import Registration from './views/Registration.vue';
 import { userService } from './services/user.service';
+//import './store/login/acount.module';
 import { router } from './router';
 
 @Component({
@@ -55,47 +63,102 @@ import { router } from './router';
     Registration,
   },
 })
-
 export default class App extends Vue {
   private clipped: boolean = true;
   private drawer: boolean = true;
   private miniVariant: boolean = false;
   private right: boolean = true;
   private title: string = 'NFC lankomumo sistema';
+  // private userElement: string = JSON.parse(localStorage.getItem('user') || '{}');
+  // private role: string = JSON.parse(localStorage.getItem('user') || '{}')['role']['roleId'];
   private renderComponent: boolean =  true;
-  private sss = JSON.parse(localStorage.getItem("user") || '{}');
-  private items = [
+
+  private itemsStudent = [
+    { title: 'Pagrindinis', icon: 'home', link: '/home' },
+    { title: 'Tvarkaraštis', icon: 'date_range', link: '/timetable' },
+    { title: 'Statistika', icon: 'timeline', link: '/statistics' },
+  ];
+  private itemsAdmin = [
     { title: 'Pagrindinis', icon: 'home', link: '/home' },
     { title: 'Gauti duomenis (test)', icon: 'get_app', link: '/fetch-data' },
     { title: 'NFC skenavimai', icon: 'nfc', link: '/nfc-fetch' },
     { title: 'Naudotoju sąrašas', icon: 'supervised_user_circle', link: '/user-list' },
-    { title: 'Tvarkaraštis', icon: 'warning', link: '/timetable' },
+    { title: 'Tvarkaraščiai', icon: 'date_range', link: '/timetable' },
+    { title: 'Įrenginiai', icon: 'scanner', link: '/device-fetch' },
+    { title: 'Statistika', icon: 'timeline', link: '/statistics' },
+  ];
+  private itemsLecturer = [
+    { title: 'Pagrindinis', icon: 'home', link: '/home' },
+    { title: 'NFC skenavimai', icon: 'nfc', link: '/nfc-fetch' },
+    { title: 'Naudotoju sąrašas', icon: 'supervised_user_circle', link: '/user-list' },
+    { title: 'Tvarkaraščiai', icon: 'date_range', link: '/timetable' },
+    { title: 'Statistika', icon: 'timeline', link: '/statistics' },
   ];
 
-
-  logout()
+  private myRole()
   {
-    console.log("Pressed logout");
+    const currentRole = JSON.parse(localStorage.getItem('user') || '{}')['role']['roleId'];
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    let myRoleString = '';
+    if(currentRole === 'STUDENT')
+    {
+      myRoleString += 'Studentas';
+    }
+    if(currentRole === 'ADMIN')
+    {
+      myRoleString += 'Administratorius';
+    }
+    if(currentRole === 'LECTURER')
+    {
+      myRoleString += 'Dėstytojas';
+    }
+    myRoleString += ': ';
+    myRoleString += user['userName']['name'] + ' ' + user['userName']['surname'];
+    return myRoleString;
+  }
+
+
+  private items(){
+    const currentRole = JSON.parse(localStorage.getItem('user') || '{}')['role']['roleId'];
+    console.log('Role is:');
+    console.log(currentRole);
+    if(currentRole === 'STUDENT') 
+    {
+      return this.itemsStudent;
+    }
+    if(currentRole === 'ADMIN')
+    {
+      return this.itemsAdmin;
+    }
+    if(currentRole === 'LECTURER')
+    {
+      return this.itemsLecturer;
+    }
+  }
+
+  private logout()
+  {
+    console.log('Pressed logout');
     userService.logout();
     router.push('/');
   }
 
-  logState()
+  private logState()
   {
     this.$forceUpdate();
-    console.log(this.sss.userName.email);
-    console.log(this.sss.userName.group);
-    console.log(this.sss.userName.name);
-    console.log(this.sss.userName.surname);
-    console.log(this.sss.userName.id);
-    console.log(this.sss.userName.uid);
-    console.log(this.sss.userName.userName);
+    // console.log(this.sss.userName.email);
+    // console.log(this.sss.userName.group);
+    // console.log(this.sss.userName.name);
+    // console.log(this.sss.userName.surname);
+    // console.log(this.sss.userName.id);
+    // console.log(this.sss.userName.uid);
+    // console.log(this.sss.userName.userName);
   }
 
 
-  isLoggedIn()
+  private isLoggedIn()
   {
-    return localStorage.getItem("user");
+    return localStorage.getItem('user');
   }
 }
 

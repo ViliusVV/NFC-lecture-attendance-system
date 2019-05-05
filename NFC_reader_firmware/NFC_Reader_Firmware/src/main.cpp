@@ -63,17 +63,17 @@ void loop(void) {
   // Wait for an ISO14443A type cards
   // 'uid' will be populated with the UID, and uidLength will indicate
   // if the uid is 4 bytes (Mifare Classic) or 7 bytes (Mifare Ultralight)
-  if(millis() - startHearbeat >= 100)
+  if(millis() - startHearbeat >= 500)
   {
     startHearbeat = millis();
+    success = nfc.readPassiveTargetID(PN532_MIFARE_ISO14443A, &uid[0], &uidLength);
+    parserNFCResults(success, uid, uidLength);
     printHearBeat();
   }
-  if(millis() - start >= 2500)
+  if(millis() - start >= 3000)
   {
     againLine = true;
     start = millis();
-    success = nfc.readPassiveTargetID(PN532_MIFARE_ISO14443A, &uid[0], &uidLength);
-    parserNFCResults(success, uid, uidLength);
     pollSettingsGet();
   }
 
@@ -333,7 +333,7 @@ void wifiConnect()
 
   #ifdef EDUROAM
     Serial.printf("Connecting to %s ", EAP_SSID);
-    //esp_wifi_sta_wpa2_ent_set_identity((uint8_t *)EAP_IDENTITY, strlen(EAP_IDENTITY)); //provide identity
+    // esp_wifi_sta_wpa2_ent_set_identity((uint8_t *)EAP_ANONYMOUS_IDENTITY, strlen(EAP_IDENTITY)); //provide identity
     esp_wifi_sta_wpa2_ent_set_username((uint8_t *)EAP_IDENTITY, strlen(EAP_IDENTITY)); //provide username --> identity and username is same
     esp_wifi_sta_wpa2_ent_set_password((uint8_t *)EAP_PASSWORD, strlen(EAP_PASSWORD)); //provide password
     esp_wpa2_config_t config = WPA2_CONFIG_INIT_DEFAULT(); //set config settings to default

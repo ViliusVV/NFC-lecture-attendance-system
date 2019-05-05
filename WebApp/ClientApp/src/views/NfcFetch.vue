@@ -14,9 +14,10 @@
           >
             <v-progress-linear v-slot:progress color="blue" indeterminate></v-progress-linear>
             <template v-slot:items="props">
+              <td>{{ props.item.scanId }}</td>
               <td>{{ props.item.uid }}</td>
               <td>{{ props.item.timeStamp }}</td>
-              <td>{{ props.item.dateTime }}</td>
+              <td>{{ props.item.deviceId }}</td>
             </template>
           </v-data-table>
 
@@ -37,9 +38,10 @@ export default class FetchDataView extends Vue {
   private loading: boolean = true;
   private scans: NfcScan[] = [];
   private headers = [
+    { text: 'Skenavimo Id', value: 'scanId' },
     { text: 'UID', value: 'uid' },
-    { text: 'TimeStamp', value: 'timeStamp' },
-    { text: 'DateTime', value: 'dateTime' },
+    { text: 'Data', value: 'dateTime' },
+    { text: 'Įrenginio Id', value: 'deviceId' },
   ];
 
   private created() {
@@ -48,7 +50,7 @@ export default class FetchDataView extends Vue {
 
   private fetcNfc() {
     const headers = {...authHeader()};
-    axios.get<NfcScan[]>('api/nfcscan/getscans',{headers:headers})
+    axios.get<NfcScan[]>('api/nfcscan/getscans', {headers:headers})
       .then((response) => {
         this.scans = response.data;
         this.loading = false;

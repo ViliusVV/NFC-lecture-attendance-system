@@ -19,6 +19,6 @@ namespace NFCSystem.Models
         [Required]
         public DateTime Finish {get;set;}
         [Required]
-        public bool Open {get;set;}
+        public bool IsVisited {get;set;}
     }
 }

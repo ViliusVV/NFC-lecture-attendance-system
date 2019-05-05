@@ -1,22 +1,17 @@
 <template>
   <div>
     <blockquote>
-      &#8220;{{ quote }}&#8221;
-      <footer>
-        <small>
-          <em>&mdash;{{ author }}</em>
-        </small>
-      </footer>
+      &#8220;{{ device + 5 }}&#8221;
     </blockquote>    
   </div>
 </template>
 
 <script>
+import { Device } from '../models/Device';
 export default {
   name: 'HelloWorld',
   props: {
-    quote : String,
-    author: String,
+    device: Number,
   },
 };
 </script>

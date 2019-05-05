@@ -64,7 +64,7 @@ namespace JwtAuthentication.Controllers
                 var claim = new[] {
                     new Claim(JwtRegisteredClaimNames.Sub, user.UserName)
                 };
-                var role = _context.IdentityUserRoles.Where(i => i.UserId == user.Id).First().RoleId; // Gets user's role
+                var role = _context.IdentityUserRoles.Where(i => i.UserId == user.Id).First(); // Gets user's role
                 var signinKey = new SymmetricSecurityKey( // Salt
                   Encoding.UTF8.GetBytes(_configuration["Jwt:SigningKey"]));
 

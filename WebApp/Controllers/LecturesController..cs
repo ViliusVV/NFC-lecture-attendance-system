@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -23,7 +25,7 @@ namespace NFCSystem.Controllers
 
         // GET api/lectures/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<List<Lecture>>> Get(string id)
+        public ActionResult<List<Lecture>> Get(string id)
         {
             var timetable = _context.Timetables.Where(x => x.StudentId == id).ToList();
 
@@ -45,11 +47,21 @@ namespace NFCSystem.Controllers
                         lecture.LectureType + "<br>" + _context.Classrooms.FirstOrDefault(x => x.ClassroomId == lecture.ClassroomId).ClassLocation + " r.-" + 
                         _context.Classrooms.FirstOrDefault(x => x.ClassroomId == lecture.ClassroomId).ClassLabel,
                     Start = Convert.ToDateTime(lecture.Date.ToString("yyyy-MM-dd") + "T" + _context.Periods.FirstOrDefault(x => x.PeriodId == lecture.PeriodId).PeriodStartTime),
-                    Finish =Convert.ToDateTime(lecture.Date.ToString("yyyy-MM-dd") + "T" + _context.Periods.FirstOrDefault(x => x.PeriodId == lecture.PeriodId).PeriodEndTime),
+                    Finish = Convert.ToDateTime(lecture.Date.ToString("yyyy-MM-dd") + "T" + _context.Periods.FirstOrDefault(x => x.PeriodId == lecture.PeriodId).PeriodEndTime),
+                    IsVisited = lecture.isVisited, 
                 });
             }
-
             return lectures;
+        }
+
+
+        // GET api/lectures/getclassrooms
+        // Gets all classroms available currently
+        [HttpGet("[action]")]
+        public async Task<ActionResult<List<Classroom>>> GetClassrooms()
+        {
+            var classrooms = await _context.Classrooms.ToListAsync();
+            return classrooms;
         }
     }
 }

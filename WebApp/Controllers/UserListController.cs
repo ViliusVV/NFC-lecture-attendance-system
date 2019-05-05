@@ -40,6 +40,13 @@ namespace NFCSystem.Controllers
         return todoItem;
         }
 
+        [HttpGet("[action]/{studentCode}")]
+        public ActionResult<string> GetUserId(string studentCode)
+        {
+            var id = _context.Users.FirstOrDefault(x => x.StudentCode == studentCode).Id;
+            return id;
+        }
+
         // POST: api/Todo
         [HttpPost("[action]")]
         public async Task<ActionResult<ApplicationUser>> PostUser(ApplicationUser item)

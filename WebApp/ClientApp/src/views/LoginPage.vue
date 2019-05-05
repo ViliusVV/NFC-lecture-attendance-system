@@ -7,3 +7,18 @@
             </v-layout>
         </v-card>
 </template>
+
+<script lang='ts'>
+import { Component, Vue } from 'vue-property-decorator';
+import { RegisteredUsers } from '../models/RegisteredUsers';
+import axios from 'axios';
+
+@Component({})
+export default class LoginPage extends Vue
+{
+    private created()
+    {
+        console.log('Login page created!');
+    }
+}
+</script>

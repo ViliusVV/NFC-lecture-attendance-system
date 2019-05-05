@@ -1,7 +1,8 @@
 export class NfcScan {
     constructor(
-      public timeStamp: number,
+      public scanId: number,
       public uid: number,
-      public dateTime: string,
+      public dateTime: Date,
+      public deviceId: number,
     ) {}
   }

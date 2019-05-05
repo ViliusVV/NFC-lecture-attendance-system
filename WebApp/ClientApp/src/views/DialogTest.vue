@@ -31,6 +31,7 @@
                           name="username" 
                           label="Vartotojo vardas" 
                           type="text"
+                          autofocus
                         ></v-text-field>
                       </div>
                       <div class="form-group">
@@ -147,6 +148,7 @@ export default {
           );
       },
       submit () {
+        console.log("Submited login");
         //validate form
         this.$v.$touch()
         //if form is valid
