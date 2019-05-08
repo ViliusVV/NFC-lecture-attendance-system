@@ -73,7 +73,7 @@ namespace JwtAuthentication.Controllers
                 var token = new JwtSecurityToken(
                   issuer: _configuration["Jwt:Site"],
                   audience: _configuration["Jwt:Site"],
-                  expires: DateTime.UtcNow.AddMinutes(expiryInMinutes),
+                  expires: DateTime.Now.AddMinutes(expiryInMinutes),
                   signingCredentials: new SigningCredentials(signinKey, SecurityAlgorithms.HmacSha256)
                 );
 
@@ -81,7 +81,7 @@ namespace JwtAuthentication.Controllers
                   new
                   {
                       token = new JwtSecurityTokenHandler().WriteToken(token),
-                      expiration = token.ValidTo,
+                      expiration = DateTime.UtcNow.AddMinutes(Convert.ToInt32(_configuration["Jwt:ExpiryInMinutes"])).ToString("yyyy-MM-ddTHH:mm:ss"),
                       userName = user,
                       role = role
                   });
