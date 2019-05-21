@@ -3,8 +3,8 @@
   <v-container fluid>
     <v-slide-y-transition mode="out-in">
       <v-layout column>
-        <h1>Users fetch</h1>
-        <p>This component demonstrates fetching data from the server.</p>
+        <h1>Užregistruotų studentų sąrašas</h1>
+        <p>Čia galite rasti informaciją apie studentus</p>
         <v-data-table
             :headers="headers"
             :items="users"
@@ -22,19 +22,6 @@
               <td>{{ props.item.email }}</td>
               <td>{{ props.item.uid }}</td>
               <td class="justify-center layout px-0">
-              <v-icon
-                small
-                class="mr-2"
-                @click="editItem(props.item)"
-              >
-                edit
-              </v-icon>
-              <v-icon
-                small
-                @click="deleteItem(props.item)"
-              >
-                delete
-              </v-icon>
             </td>
             </template>
           </v-data-table>
@@ -62,7 +49,7 @@ export default class FetchDataView extends Vue {
     { text: 'Grupė', value: 'group' },
     { text: 'Vidko', value: 'studentCode' },
     { text: 'El. Paštas', value: 'email' },
-    { text: 'UID', value: 'uid'},
+    { text: 'Pažymėjimo ID', value: 'uid'},
     { text: '', value: ''},
   ];
 

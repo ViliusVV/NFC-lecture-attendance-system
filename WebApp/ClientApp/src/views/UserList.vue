@@ -3,7 +3,7 @@
     <v-slide-y-transition mode="out-in">
       <v-layout column>
         <h1>Užregistruotų vartotjų sąrašas</h1>
-        <p>Čia galima peržiūrėti sistemos vartotojus, keisti ar šalinti jų duomenis</p>
+        <p>Čia galima peržiūrėti sistemos vartotojus, keisti jų duomenis</p>
         <v-data-table
             :headers="headers"
             :items="users"

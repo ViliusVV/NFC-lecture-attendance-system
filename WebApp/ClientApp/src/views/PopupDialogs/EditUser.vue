@@ -63,7 +63,7 @@
               </v-flex>
             </v-layout>
           </v-container>
-          <small>*Būtini laukai</small>
+          <!-- <small>*Būtini laukai</small> -->
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -108,23 +108,18 @@
         //this.classroom = this.classrooms[this.idx];
         //console.log(this.classroom);
         this.users = response.data;
-        console.log(this.users);
+        //console.log(this.users);
         this.idx = findWithAttr(this.users, 'studentCode', this.$props.userObj.studentCode);
         this.RegisteredUsers = this.users[this.idx];
-        console.log(this.idx);
-        console.log(this.RegisteredUsers);
+        //console.log(this.idx);
+        //console.log(this.RegisteredUsers);
       });
     },
     computed: {
       getUsers () {
-        console.log(this.users);
+        //console.log(this.users);
         return this.users;
       },
-
-      getNormalLocation(label, location){
-        return label + " " + location;
-      }
-      
     },
     methods: {
       submit(){
@@ -136,7 +131,7 @@
           //this.$props.userObj.email = this.RegisteredUsers.email;
           //this.$props.userObj.uid = this.RegisteredUsers.uid;
           this.$props.userObj
-          console.log(this.$props.userObj);
+          //console.log(this.$props.userObj);
           const headers = {...authHeader()};
           axios.post('api/userlist/postuser/', this.$props.userObj, {headers:headers})
           .then((response) => {
@@ -149,26 +144,13 @@
       getUser(id)
       {
         this.idx = findWithAttr(this.users, 'studentCode', this.$props.userObj.studentCode);
-        //console.log(this.$props.userObj.classroomId);
-        console.log(idx)
-        console.log(this.users[idx]);
-        //var classss = this.users[idx];
-        //this.classroom = classss.classroomId + ' - ' + classss.classLocation + ' r.-' + classss.classLabel;
-        // console.log(this.classrooms[idx]);
-        // console.log(this.classroom);
-        //this.classroom = this.classrooms[idx]
+        //console.log(idx)
+        //console.log(this.users[idx]);
         return idx;
       },
-      //textProps: item => item.classroomId + ' - ' + item.classLocation + ' r.-' + item.classLabel,
     }
-    
 }
 
-function getTextProps(item)
-{
-  return item.name + ' - ' + item.surname;
-  //return item.classroomId + ' - ' + item.classLocation + ' r.-' + item.classLabel;
-}
 
 function findWithAttr(array, attr, value) {
     for(var i = 0; i < array.length; i += 1) {

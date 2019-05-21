@@ -80,10 +80,10 @@ export default class App extends Vue {
   ];
   private itemsAdmin = [
     { title: 'Pagrindinis', icon: 'home', link: '/home' },
-    { title: 'Gauti duomenis (test)', icon: 'get_app', link: '/fetch-data' },
+    // { title: 'Gauti duomenis (test)', icon: 'get_app', link: '/fetch-data' },
     { title: 'NFC skenavimai', icon: 'nfc', link: '/nfc-fetch' },
-    { title: 'Naudotoju sąrašas', icon: 'supervised_user_circle', link: '/user-list' },
-    { title: 'Naudotoju sąršas', icon: 'supervised_user_circle', link: '/getusers' },
+    // { title: 'Naudotojų sąrašas', icon: 'supervised_user_circle', link: '/user-list' },
+    { title: 'Naudotojų sąrašas', icon: 'supervised_user_circle', link: '/getusers' },
     { title: 'Tvarkaraščiai', icon: 'date_range', link: '/timetable' },
     { title: 'Įrenginiai', icon: 'scanner', link: '/device-fetch' },
     { title: 'Statistika', icon: 'timeline', link: '/statistics' },
@@ -91,7 +91,7 @@ export default class App extends Vue {
   private itemsLecturer = [
     { title: 'Pagrindinis', icon: 'home', link: '/home' },
     { title: 'NFC skenavimai', icon: 'nfc', link: '/nfc-fetch' },
-    { title: 'Naudotoju sąrašas', icon: 'supervised_user_circle', link: '/user-list' },
+    { title: 'Naudotojų sąrašas', icon: 'supervised_user_circle', link: '/user-list' },
     { title: 'Tvarkaraščiai', icon: 'date_range', link: '/timetable' },
     { title: 'Statistika', icon: 'timeline', link: '/statistics' },
   ];
