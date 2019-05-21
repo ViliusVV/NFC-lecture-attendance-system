@@ -4,7 +4,7 @@ export class RegisteredUsers {
       public name: string,
       public surname: string,
       public studentCode: string,
-      // public group: string,
+      public group: string,
       public email: string,
       public uid: number,
     ) {}

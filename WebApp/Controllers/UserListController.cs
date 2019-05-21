@@ -51,11 +51,11 @@ namespace NFCSystem.Controllers
         [HttpPost("[action]")]
         public async Task<ActionResult<ApplicationUser>> PostUser(ApplicationUser item)
         {
-            _context.Users.Add(item);
+            _context.Users.Update(item);
             await _context.SaveChangesAsync();
             //System.Diagnostics.Debug.WriteLine(item.ToString());
 
-            return CreatedAtAction(nameof(GetUser), new { id = item.UserName }, item);
+            return CreatedAtAction(nameof(GetUser), new { id = item.StudentCode }, item);
         }   
     }
 }

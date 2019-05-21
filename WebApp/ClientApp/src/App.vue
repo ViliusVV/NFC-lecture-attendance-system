@@ -83,6 +83,7 @@ export default class App extends Vue {
     { title: 'Gauti duomenis (test)', icon: 'get_app', link: '/fetch-data' },
     { title: 'NFC skenavimai', icon: 'nfc', link: '/nfc-fetch' },
     { title: 'Naudotoju sąrašas', icon: 'supervised_user_circle', link: '/user-list' },
+    { title: 'Naudotoju sąršas', icon: 'supervised_user_circle', link: '/getusers' },
     { title: 'Tvarkaraščiai', icon: 'date_range', link: '/timetable' },
     { title: 'Įrenginiai', icon: 'scanner', link: '/device-fetch' },
     { title: 'Statistika', icon: 'timeline', link: '/statistics' },
