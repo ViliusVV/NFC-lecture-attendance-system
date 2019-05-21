@@ -50,7 +50,7 @@
                         ></v-text-field>
                       </div>      
                         <v-alert
-                          :value="error"
+                          :value="erroro"
                           type="error"
                           transition="scale-transition"
                         >
@@ -102,7 +102,7 @@ export default {
         loading: false,
         returnUrl: '',
         returnError: '',
-        error: false
+        erroro: false
       }
     },
     computed: {
@@ -151,7 +151,7 @@ export default {
               },
               returnError => {
                   this.returnError = returnError;
-                  this.error = true;
+                  this.erroro = true;
                   this.loading = false;
               }
           );
