@@ -48,7 +48,14 @@
                           label="Slaptažodis" 
                           type="password"
                         ></v-text-field>
-                      </div>                  
+                      </div>      
+                        <v-alert
+                          :value="erroro"
+                          type="error"
+                          transition="scale-transition"
+                        >
+                          Neteisingai įvestas vartotojo vardas arba slaptažodis!
+                        </v-alert> 
                   </v-form>
                 </v-card-text>
                 <v-card-actions>
@@ -95,6 +102,7 @@ export default {
         loading: false,
         returnUrl: '',
         returnError: '',
+        erroro: false
       }
     },
     computed: {
@@ -143,6 +151,7 @@ export default {
               },
               returnError => {
                   this.returnError = returnError;
+                  this.erroro = true;
                   this.loading = false;
               }
           );

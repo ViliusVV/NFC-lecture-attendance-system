@@ -26,6 +26,7 @@ import {
   VAutocomplete,
   VAvatar,
   VChip,
+  VAlert,
 } from 'vuetify'
 import 'vuetify/src/stylus/app.styl'
 import lt from './lt-locale'
@@ -57,6 +58,7 @@ Vue.use(Vuetify, {
     VAutocomplete,
     VAvatar,
     VChip,
+    VAlert,
   },
   theme: {
     primary: '#1976D2',

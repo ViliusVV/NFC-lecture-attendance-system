@@ -40,6 +40,11 @@ export const router = new Router({
       component: () => import(/* webpackChunkName: "fetch-data" */ './views/UsersFetch.vue'),
     },
     {
+      path: '/getusers',
+      name: 'getusers',
+      component: () => import(/* webpackChunkName: "fetch-data" */ './views/UserList.vue'),
+    },
+    {
       path: '/timetable',
       name: 'timetable',
       component: () => import(/* webpackChunkName: "fetch-data" */ './views/Timetable.vue'),
@@ -48,6 +53,11 @@ export const router = new Router({
       path: '/statistics',
       name: 'statistics',
       component: () => import(/* webpackChunkName: "fetch-data" */ './views/Statistics.vue'),
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: () => import(/* webpackChunkName: "fetch-data" */ './views/Settings.vue'),
     },
     {
       path: '*',
@@ -60,7 +70,18 @@ router.beforeEach((to, from, next) => {
   // redirect to login page if not logged in and trying to access a restricted page
   const publicPages = ['/'];
   const authRequired = !publicPages.includes(to.path);
-  const loggedIn = localStorage.getItem('user');
+  let loggedIn = localStorage.getItem('user');
+
+  if (loggedIn) {
+    const dateNow = new Date().toJSON().slice(0, 19);
+    const index = loggedIn.indexOf('expiration');
+    const expiration = loggedIn.substring(index + 13, index + 32);
+    if (expiration <= dateNow) {
+      localStorage.removeItem('user');
+      loggedIn = null;
+      router.push('/');
+    }
+  }
 
   if (authRequired && !loggedIn) {
     return next({
