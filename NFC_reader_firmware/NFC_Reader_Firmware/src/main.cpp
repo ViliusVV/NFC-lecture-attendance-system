@@ -100,7 +100,7 @@ void loop(void) {
 void printHearBeat()
 {
   if(againLine) { Serial.println(); againLine = false;}
-  Serial.println(ESP.getFreeHeap(), ESP.getMinFreeHeap());
+  Serial.printf("%d, %d\n", ESP.getFreeHeap(), ESP.getMinFreeHeap());
 }
 
 

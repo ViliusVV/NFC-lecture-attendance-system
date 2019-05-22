@@ -2,7 +2,7 @@
   <v-layout row justify-center>
     <v-dialog v-model="dialog" persistent max-width="600px">
       <template v-slot:activator="{ on }">
-        <v-btn color="primary" dark v-on="on">
+        <v-btn flat color="primary" dark v-on="on">
           <v-icon
             small
             class="mr-1"

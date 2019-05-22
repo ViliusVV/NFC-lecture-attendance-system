@@ -1,5 +1,6 @@
 <template>
   <v-container fluid>
+    <Registration/>
     <v-slide-y-transition mode="out-in">
       <v-layout column>
         <h1>Užregistruotų vartotjų sąrašas</h1>
@@ -8,7 +9,6 @@
         <p >Čia galima peržiūrėti sistemos vartotojus, keisti jų duomenis</p>
         </v-flex>
         <v-flex offset-xs6 order-lg2>
-        <Registration xs-6/>
         </v-flex>
       </v-layout>
         <v-data-table

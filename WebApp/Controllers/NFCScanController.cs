@@ -38,10 +38,23 @@ namespace NFCSystem.Controllers
         [HttpGet("[action]/{id}")]
         public async Task<ActionResult<NFCScan>> GetScan(long id)
         {
-            var todoItem = await _context.NFCScans.FindAsync(id);
-            //var student = await _context.Users.FirstOrDefaultAsync(x => x.UID == todoItem.UID);
-            var restult = new {scan = todoItem/* , stud = student*/};
-            if (todoItem == null)
+            var scanItem = await _context.NFCScans.FindAsync(id);
+            //var student = await _context.Users.FirstOrDefaultAsync(x => x.UID == scanItem.UID);
+            var restult = new {scan = scanItem/* , stud = student*/};
+            if (scanItem == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(restult);
+        }
+
+        [HttpGet("[action]")]
+        public async Task<ActionResult<NFCScan>> GetLastScan()
+        {
+            var scanItem = await _context.NFCScans.LastAsync();
+            var restult = new {scan = scanItem};
+            if (scanItem == null)
             {
                 return NotFound();
             }
