@@ -88,6 +88,7 @@ export default class App extends Vue {
     { title: 'Tvarkaraščiai', icon: 'date_range', link: '/timetable' },
     { title: 'Įrenginiai', icon: 'scanner', link: '/device-fetch' },
     { title: 'Statistika', icon: 'timeline', link: '/statistics' },
+    { title: 'Nustatymai', icon: 'settings', link: '/settings' },
   ];
   private itemsLecturer = [
     { title: 'Pagrindinis', icon: 'home', link: '/home' },
@@ -95,6 +96,7 @@ export default class App extends Vue {
     { title: 'Naudotojų sąrašas', icon: 'supervised_user_circle', link: '/user-list' },
     { title: 'Tvarkaraščiai', icon: 'date_range', link: '/timetable' },
     { title: 'Statistika', icon: 'timeline', link: '/statistics' },
+    { title: 'Nustatymai', icon: 'settings', link: '/settings' },
   ];
 
   private myRole()
