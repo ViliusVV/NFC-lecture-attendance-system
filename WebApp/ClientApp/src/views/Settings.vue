@@ -1,5 +1,5 @@
 <template>
-  <v-layout class="ma-2">
+  <v-layout class="mt-2 mb-5">
     <v-flex xs6 sm7 offset-sm2>
       <v-card>
         <v-card-title primary-title>
@@ -8,13 +8,24 @@
           </div>
         </v-card-title>
         <v-card-text>
-          <v-container >
+          <v-container>
             <v-layout wrap>
               <v-flex xs12>
-                <v-text-field v-model="userObj.userName" label="Prisijungimo vardas" outline></v-text-field>
+                <v-text-field
+                  v-model="userObj.userName"
+                  label="Prisijungimo vardas"
+                  outline
+                  readonly
+                ></v-text-field>
               </v-flex>
               <v-flex>
-                <v-text-field v-model="userObj.name" label="Vardas" :value="userObj.name" outline></v-text-field>
+                <v-text-field
+                  v-model="userObj.name"
+                  label="Vardas"
+                  :value="userObj.name"
+                  outline
+                  readonly
+                ></v-text-field>
               </v-flex>
               <v-flex>
                 <v-text-field
@@ -22,17 +33,24 @@
                   label="Pavardė"
                   :value="userObj.surname"
                   outline
+                  readonly
                 ></v-text-field>
               </v-flex>
-              <v-flex >
-                <v-text-field v-model="userObj.group" label="Grupė" :value="userObj.group" outline></v-text-field>
+              <v-flex>
+                <v-text-field
+                  v-model="userObj.group"
+                  label="Grupė"
+                  :value="userObj.group"
+                  outline
+                  readonly
+                ></v-text-field>
               </v-flex>
-              <v-flex >
+              <v-flex>
                 <v-text-field
                   v-model="userObj.studentCode"
                   label="Vidko"
                   :value="userObj.studentCode"
-                  outline
+                  outline readonly
                 ></v-text-field>
               </v-flex>
               <v-flex xs12>
@@ -49,9 +67,14 @@
             </v-layout>
           </v-container>
         </v-card-text>
-
+        <v-alert class="ml-5 mr-5" :value="erroro" type="error" transition="scale-transition">Įvyko klaida</v-alert>
+        <v-alert class="ml-5 mr-5"
+          :value="succe"
+          type="success"
+          transition="scale-transition"
+        >Duomenys sėkmingai pakeisti</v-alert>
         <v-card-actions>
-          <v-btn flat color="primary">Pateikti</v-btn>
+          <v-btn flat  @click="submit" color="primary">Pateikti</v-btn>
         </v-card-actions>
       </v-card>
     </v-flex>
@@ -73,36 +96,32 @@ export default {
     RegisteredUsers: null,
     users: [],
     idx: null,
-    dialog: false
+    dialog: false,
+    erroro: false,
+    succe: false
   }),
   created() {
+    this.succe = false;
+    this.error = false;
     const currentUser = JSON.parse(localStorage.getItem("user"))["userName"];
     this.$props.userObj = currentUser;
     console.log(this.$props.userObj);
   },
   methods: {
     submit() {
-      //this.$props.userObj.id = this.RegisteredUsers.id;
-      //this.$props.userObj.name = this.RegisteredUsers.name;
-      //this.$props.userObj.surname = this.RegisteredUsers.surname;
-      //this.$props.userObj.studentCode = this.RegisteredUsers.studentCode;
-      //this.$props.userObj.group = this.RegisteredUsers.group;
-      //this.$props.userObj.email = this.RegisteredUsers.email;
-      //this.$props.userObj.uid = this.RegisteredUsers.uid;
-      this.$props.userObj;
-      //console.log(this.$props.userObj);
       const headers = { ...authHeader() };
       axios
         .post("api/userlist/postuser/", this.$props.userObj, {
           headers: headers
         })
         .then(response => {
-          //this.
-          //this.scans = response.data;
-          //this.loading = false;
+          this.succe = true;
+        })
+        .catch(error => {
+          this.erroro = true;
         });
       this.dialog = false;
-    },
+    }
   }
 };
 </script>
