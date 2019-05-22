@@ -5,7 +5,7 @@
     </template>
     <v-card class="elevation-12">
       <v-toolbar dark color="primary">
-        <v-toolbar-title>Registracija</v-toolbar-title>
+        <v-toolbar-title>Užregistruoti</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-tooltip right>
           <template v-slot:activator="{ on }">

@@ -52,6 +52,7 @@ void setup(void) {
   start = millis();
   startHearbeat = millis();
   // Nofify about finished setup
+  Serial.printf("CPU:%d Heap:%d PsRam:%d\n", ESP.getCpuFreqMHz(), ESP.getHeapSize(), ESP.getPsramSize());
   beep(2, 100);
 }
 
@@ -99,7 +100,7 @@ void loop(void) {
 void printHearBeat()
 {
   if(againLine) { Serial.println(); againLine = false;}
-  Serial.print(".");
+  Serial.println(ESP.getFreeHeap(), ESP.getMinFreeHeap());
 }
 
 

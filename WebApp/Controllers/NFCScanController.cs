@@ -67,6 +67,8 @@ namespace NFCSystem.Controllers
                     TimeSpan.Compare(p.PeriodEndTime, item.TimeStamp.TimeOfDay) == 1)
                 .FirstOrDefaultAsync();
             // Find exact timetable
+            if(stud != null && period != null && classRoom != null)
+            {
             var timetable = await _context.Timetables
                 .Where(
                     t => t.ClassroomId == classRoom.ClassroomId &&
@@ -78,6 +80,7 @@ namespace NFCSystem.Controllers
             timetable.isVisited = true;
             
             _context.Timetables.Update(timetable);
+            }
             _context.NFCScans.Add(item);
             await _context.SaveChangesAsync();
             //System.Diagnostics.Debug.WriteLine(item.ToString());

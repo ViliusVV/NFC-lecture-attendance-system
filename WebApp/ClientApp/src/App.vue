@@ -24,7 +24,6 @@
       </v-btn>
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
-      <Registration v-if="!isLoggedIn()" right/>
       <DialogTest v-if="!isLoggedIn()" right/>
       <v-chip v-if="isLoggedIn()" color="indigo" text-color="white">
         <v-avatar>

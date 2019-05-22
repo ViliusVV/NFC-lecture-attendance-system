@@ -86,6 +86,7 @@ namespace NFCSystem.Data
             builder.Entity<Device>().HasData(new Device{DeviceId=6,DeviceIdReal=6, PendingDeviceId=6, ClassroomId=9999});
             builder.Entity<Device>().HasData(new Device{DeviceId=7,DeviceIdReal=7, PendingDeviceId=7, ClassroomId=4});
 
+
             // Configuration for NFCScans
             builder.Entity<NFCScan>().HasKey(k => k.ScanId);
             builder.Entity<NFCScan>().Property(p => p.ScanId).ValueGeneratedOnAdd();

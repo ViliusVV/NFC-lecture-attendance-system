@@ -3,7 +3,14 @@
     <v-slide-y-transition mode="out-in">
       <v-layout column>
         <h1>Užregistruotų vartotjų sąrašas</h1>
-        <p>Čia galima peržiūrėti sistemos vartotojus, keisti jų duomenis</p>
+      <v-layout row>
+        <v-flex xs6>
+        <p >Čia galima peržiūrėti sistemos vartotojus, keisti jų duomenis</p>
+        </v-flex>
+        <v-flex offset-xs6 order-lg2>
+        <Registration xs-6/>
+        </v-flex>
+      </v-layout>
         <v-data-table
             :headers="headers"
             :items="users"
@@ -40,12 +47,13 @@ import axios from 'axios';
 import '../components/login/auth-header';
 import { authHeader } from '../components/login/auth-header';
 import EditUser from './PopupDialogs/EditUser.vue';
+import Registration from './Registration.vue';
 import { RegisteredUsers } from '../models/RegisteredUsers';
 
 @Component({
   components: {
     EditUser,
-    //HelloWorld,
+    Registration,
   },
 })
 export default class FetchDataView extends Vue {

@@ -8,8 +8,8 @@
 #define SPEAKER         (25)
 
 // WiFi settings
-// #define SSID            "DESKTOP-A4GI4HB"
-// #define PASSWD          "bigbang123"
+#define SSID            "DESKTOP-A4GI4HB"
+#define PASSWD          "bigbang123"
 // #define SSID               "Redmi111"
 // #define PASSWD             "abcabc123"
 // #define SSID               "OnePlus 5"
@@ -30,12 +30,12 @@
 // API settings
 // #define API_ENDPOINT     "http://ptsv2.com/t/je1wo-1552248829/post"
 //#define API_ENDPOINT      "http://lankomumas.duckdns.org:4430:/api/nfcscan/postscan"
-// #define API_ENDPOINT        "http://lankomumas.duckdns.org:4430:/api/nfcscan/postscan"
-// #define API_ENDPOINT_POLL   "http://lankomumas.duckdns.org:4430:/api/nfcscan/getdeviceid/"
-// #define API_ENDPOINT_UP_DEV "http://lankomumas.duckdns.org:4430:/api/nfcscan/postdevice/"
-#define API_ENDPOINT        "http://192.168.0.101:4430:/api/nfcscan/postscan"
-#define API_ENDPOINT_POLL   "http://192.168.0.101:4430:/api/nfcscan/getdeviceid/"
-#define API_ENDPOINT_UP_DEV "http://192.168.0.101:4430:/api/nfcscan/postdevice/"
+// #define API_ENDPOINT        "http://lankomumas.duckdns.org:4430/api/nfcscan/postscan"
+// #define API_ENDPOINT_POLL   "http://lankomumas.duckdns.org:4430/api/nfcscan/getdeviceid/"
+// #define API_ENDPOINT_UP_DEV "http://lankomumas.duckdns.org:4430/api/nfcscan/postdevice/"
+#define API_ENDPOINT        "http://192.168.0.101:4430/api/nfcscan/postscan"
+#define API_ENDPOINT_POLL   "http://192.168.0.101:4430/api/nfcscan/getdeviceid/"
+#define API_ENDPOINT_UP_DEV "http://192.168.0.101:4430/api/nfcscan/postdevice/"
 //#define API_ENDPOINT      "http://192.168.43.119:4430/api/nfcscan/postscan"
 
 // Device config
