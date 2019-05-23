@@ -1,4 +1,7 @@
 ﻿using Xunit;
+using NFCSystem.Controllers;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace UnitTests
 {
@@ -42,6 +45,20 @@ namespace UnitTests
         bool IsntOdd(int value)
         {
             return value % 2 != 1;
+        }
+
+        // ValuesControllerTest is just an example
+        [Fact]
+        public void ValuesControllerTest() {
+            // Arrange
+            var controller = new ValuesController();
+
+            // Act
+            var result = controller.Get();
+
+            // Assert
+            var iEnum = Assert.IsType<ActionResult<IEnumerable<string>>>(result);
+            Assert.Equal(new string[] { "value1", "value2" }, iEnum.Value);
         }
     }
 }
