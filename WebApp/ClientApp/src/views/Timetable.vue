@@ -200,7 +200,7 @@
     >
       <v-sheet height="85vh">
         <v-progress-circular
-          v-if="events.length == 0"
+          v-if="loadingLectures"
           :size="70"
           :width="7"
           color="primary"
@@ -392,6 +392,7 @@
       select: null,
       isAdminOrLecturer: false,
       fetched: false,
+      loadingLectures: false,
     }),
     computed: {
       intervalStyle () {
@@ -415,7 +416,7 @@
     },
     created () {
       const userData = JSON.parse(localStorage.getItem("user"));
-      const userId =  userData.userName.id;      
+      const userId =  userData.userName.id;   
       this.fetchLectures(`api/lectures/${userId}`);
       
       if(userData.role.roleId == 'ADMIN' || userData.role.roleId == 'LECTURER') {
@@ -460,6 +461,7 @@
         })
       },
       fetchLectures(serviceUrl) {
+        this.loadingLectures = true;
         axios.get(serviceUrl)
         .then(response => {
           // JSON responses are automatically parsed.
@@ -480,6 +482,7 @@
             element.lectureDuration = Math.floor((Math.abs(new Date(element.start) - new Date(element.finish))/1000)/60);
             element.open = false;
           });
+          this.loadingLectures = false;
         })
         .catch(e => {
           this.errors.push(e)
