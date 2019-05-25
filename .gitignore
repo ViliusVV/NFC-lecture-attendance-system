@@ -1,3 +1,7 @@
 **WebApp/bin/**
 **WebApp/obj/**
 **WebApp/obj/Debug/**
+**WebApp/appsettings.json**
+**UnitTests/bin**
+**UnitTests/obj**
+**UnitTests/.vs**

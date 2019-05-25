@@ -79,5 +79,36 @@ namespace UnitTests.TestClasses
             else
                 result.Should().BeNull();
         }
+
+        //May fail if user with UID 111111111 is not deleted
+        [Fact]
+        public async void UserListController_PostUser_ShouldPostUserToDatabase() {
+            //Arrange
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>()
+                .UseMySql(ConnectionString)
+                .Options;
+            var context = new ApplicationDbContext(options);
+            var controller = new UserListController(context);
+
+            var newUser = new ApplicationUser() 
+            {
+                Name = "Unit",
+                Surname = "Test",
+                UID = 111111111,
+                Group = "IFF-0/0",
+                StudentCode = "ABCDE"
+            };
+
+            //Act
+            await controller.PostUser(newUser);
+            var wasAdded = context.Users.Where(x => x.UID == 111111111).First();
+
+            //Assert
+            Assert.Equal(newUser, wasAdded);
+
+            //Deletes created fake user
+            context.Users.Remove(newUser);
+            context.SaveChanges();
+        }     
     }
 }
