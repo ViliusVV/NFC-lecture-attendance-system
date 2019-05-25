@@ -196,8 +196,17 @@
       sm12
       lg9
       class="pl-3 mt-2"
+      v-if="fetched"
     >
       <v-sheet height="85vh">
+        <v-progress-circular
+          v-if="events.length == 0"
+          :size="70"
+          :width="7"
+          color="primary"
+          indeterminate
+          style="position: absolute; z-index: 99; left:45.5%; top: 43.2%"
+        ></v-progress-circular>
         <v-calendar
           locale="lt"
           ref="calendar"
@@ -381,7 +390,8 @@
       items: [],
       search: null,
       select: null,
-      isAdminOrLecturer: false
+      isAdminOrLecturer: false,
+      fetched: false,
     }),
     computed: {
       intervalStyle () {
@@ -410,6 +420,8 @@
       
       if(userData.role.roleId == 'ADMIN' || userData.role.roleId == 'LECTURER') {
         this.isAdminOrLecturer = true;
+      } else {
+        this.fetched = true;
       }
    },
    watch: {
@@ -424,6 +436,7 @@
             .then(response => {
               //and finally gets his lectures
               this.fetchLectures(`api/lectures/${response.data}`);
+              this.fetched = true;
             });
         }
       }
@@ -483,6 +496,7 @@
     position: relative;
     padding-top: 30px;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    height: 85vh;
   }
   .day-header {
     margin: 0px 2px 2px 2px;
