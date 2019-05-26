@@ -1,87 +1,82 @@
 <template>
-<v-layout>
-    <div style="margin-left: -8%">
-  <app-diagram1>
-    <v-flex xs12 sm4 offset-sm3>
-      <v-card width="450"   class="elevation-4">
-        <v-card-title primary-title>
+  <v-layout>
+    <div style="margin-left: -5%">
+      <v-flex xs12 sm4 offset-sm3>
+        <v-card width="450" class="elevation-4">
+          <v-card-title primary-title>
             <h3 align="center" class="headline mb-0">Bendras lankomumas</h3>
-        </v-card-title>
-          <div>  
-            <apexchart type=radialBar height=350 :options="chartOptions" :series="series" /> 
+          </v-card-title>
+          <div>
+            <apexchart type="radialBar" height="350" :options="chartOptions" :series="series"/>
           </div>
-      </v-card>
-    </v-flex>
-  </app-diagram1>
+        </v-card>
+      </v-flex>
     </div>
-  <div style="margin-left: 10%">
-      <app-slide>
-              <v-expansion-panel
-        v-model="panel"
-        expand
-      >
-            <v-expansion-panel-content
-        v-for="(item,i) in 1"
-        :key="i"
-      >
-        <template v-slot:header>
-          <div>Laboratorinai darbai</div>
-        </template>
-      <v-layout wrap>
-        <div style="margin-left: 5%" v-for="item in labAttendance" v-bind:key="item.title + item.type" >
-           <v-progress-circular style="margin-left: 5%"
-                :size="130"
+    <div style="margin-left: 10%">
+      <v-expansion-panel expand>
+        <v-expansion-panel-content v-for="(item,i) in 1" :key="i">
+          <template v-slot:header>
+            <div>Laboratorinai darbai</div>
+          </template>
+          <v-layout wrap>
+            <div
+              style="margin-left: 5%"
+              v-for="item in attendanceLab"
+              v-bind:key="item.title"
+            >
+              <v-progress-circular
+                style="margin-left: 5%"
+                :size="200"
                 :value="item.attendance"
                 color="green"
                 :width="10"
-            >{{item.title}} {{item.attendance}}%</v-progress-circular>
-            &nbsp;
-        </div>
-      </v-layout>
-      </v-expansion-panel-content>
-            <v-expansion-panel-content
-        v-for="(item,i) in 1"
-        :key="i"
-      >
-        <template v-slot:header>
-          <div>Teorinės paskaitos</div>
-        </template>
-      <v-layout wrap>
-        <div style="margin-left: 5%" v-for="item in TeorAttendance" v-bind:key="item.title + item.type" >
-           <v-progress-circular style="margin-left: 5%"
+              >{{item.title}} {{item.attendance}}%</v-progress-circular>&nbsp;
+            </div>
+          </v-layout>
+        </v-expansion-panel-content>
+        <v-expansion-panel-content v-for="(item,i) in 1" :key="i">
+          <template v-slot:header>
+            <div>Teorinės paskaitos</div>
+          </template>
+          <v-layout wrap>
+            <div
+              style="margin-left: 5%"
+              v-for="item in attendanceTheory"
+              v-bind:key="item.title"
+            >
+              <v-progress-circular
+                style="margin-left: 5%"
                 :size="130"
                 :value="item.attendance"
                 color="red"
                 :width="10"
-            >{{item.title}} {{item.attendance}}%</v-progress-circular>
-            &nbsp;
-        </div>
-      </v-layout>
-      </v-expansion-panel-content>
+              >{{item.title}} {{item.attendance}}%</v-progress-circular>&nbsp;
+            </div>
+          </v-layout>
+        </v-expansion-panel-content>
 
-                  <v-expansion-panel-content
-        v-for="(item,i) in 1"
-        :key="i"
-      >
-        <template v-slot:header>
-          <div>Praktiniai užsiėmimai</div>
-        </template>
-      <v-layout wrap>
-        <div style="margin-left: 5%" v-for="item in PrakAttendance" v-bind:key="item.title + item.type" >
-           <v-progress-circular style="margin-left: 5%"
+        <v-expansion-panel-content v-for="(item,i) in 1" :key="i">
+          <template v-slot:header>
+            <div>Praktiniai užsiėmimai</div>
+          </template>
+          <v-layout wrap>
+            <div
+              style="margin-left: 5%"
+              v-for="item in attendancePractice"
+              v-bind:key="item.title"
+            >
+              <v-progress-circular
+                style="margin-left: 5%"
                 :size="130"
                 :value="item.attendance"
                 color="blue"
                 :width="10"
-            >{{item.title}} {{item.attendance}}%</v-progress-circular>
-            &nbsp;
-        </div>
-      </v-layout>
-      </v-expansion-panel-content>
-    </v-expansion-panel>
-  </app-slide>
-  </div>
-
+              >{{item.title}} {{item.attendance}}%</v-progress-circular>&nbsp;
+            </div>
+          </v-layout>
+        </v-expansion-panel-content>
+      </v-expansion-panel>
+    </div>
   </v-layout>
 </template>
 
@@ -107,59 +102,7 @@ const duom = [
   {title:"Operacinės sistemos",type:"laborai",attended:15,total:16,attendance:93.75}
 ];
 
-
-function getLaboraiAttendance(duom){
-  var totallectures = 0;
-  var totalattended = 0;
-  duom.forEach(element => {
-    if (element.type=="laborai") {
-      totallectures = totallectures + element.total;
-      totalattended = totalattended + element.attended;
-    }
-  });
-  return (totalattended/totallectures*100).toFixed(2);
-}
-
-function getTeorijaAttendance(duom){
-  var totallectures = 0;
-  var totalattended = 0;
-  duom.forEach(element => {
-    if (element.type=="teorija") {
-      totallectures = totallectures + element.total;
-      totalattended = totalattended + element.attended;
-    }
-  });
-  return (totalattended/totallectures*100).toFixed(2);
-}
-
-function getPraktikaAttendance(duom){
-  var totallectures = 0;
-  var totalattended = 0;
-  duom.forEach(element => {
-    if (element.type=="praktika") {
-      totallectures = totallectures + element.total;
-      totalattended = totalattended + element.attended;
-    }
-  });
-  return (totalattended/totallectures*100).toFixed(2);
-}
-
-function getTotalAttendance(duom){
-  var totallectures = 0;
-  var totalattended = 0;
-  duom.forEach(element => {
-      totallectures = totallectures + element.total;
-      totalattended = totalattended + element.attended;
-  });
-  return (totalattended/totallectures*100).toFixed(2);
-}
-
 var mas = [];
-
-mas.push(getTotalAttendance(duom));
-mas.push(getLaboraiAttendance(duom));
-mas.push(getPraktikaAttendance(duom));
-mas.push(getTeorijaAttendance(duom));
 
 
 var teor = [];
@@ -187,9 +130,9 @@ Vue.component('apexchart', VueApexCharts)
 export default {
     data: () => ({
       // Susikuriu data, dar kitaip vadinama state objekta, i kuri desiu visus paskaitus objektus
-      labAttendance: [],
-      TeorAttendance: [],
-      PrakAttendance: [],
+      attendanceLab: [],
+      attendancePractice: [],
+      attendanceTheory: [],
       series: mas,
             chartOptions: {
               plotOptions: {
@@ -213,7 +156,7 @@ export default {
                   }
                 }
               },
-              colors: ['#1ab7ea', '#0084ff', '#39539E', '#0077B5'],
+              colors: ['#f9a825', '#388e3c', '#3949ab', '#d50000'],
               labels: ['Iš viso', 'Laboratorinai', 'Pratybos', 'Teorija'],
               legend: {
                 show: true,
@@ -246,17 +189,69 @@ export default {
             }
     }),
     // sitas metodas iskvieciamas viena karta kai view yra sukuriamas
-    created() {
-      // iskvieciu zemiau apsirasyta metoda ir jam paduodu duomenu masyva kuri apsirasiau auksciau
-      this.getData(lab, teor, prak);
-    },
     methods: {
       // metodas, kuris pakeicia state objekto reiksme i paduodama per argumenta
       getData(labr, teori, prakt) {
         this.labAttendance = labr;
         this.TeorAttendance = teori;
         this.PrakAttendance = prakt;
+      },
+      updateAttendance(attendanceArr)
+      {
+        console.log(attendanceArr);
+        attendanceArr.forEach(element =>
+        {
+          var objP = 
+          {
+            title : element.lectureID + " " + element.lectureName,
+            attendance : element.attendancePractice,
+          }
+          var objL =
+          {
+            title : element.lectureID + " " + element.lectureName,
+            attendance : element.attendanceLab,
+          } 
+          var objT = 
+          {
+            title : element.lectureID + " " + element.lectureName,
+            attendance : element.attendanceTheory,
+          }
+          if(element.totalLab > 0){
+            this.attendanceLab.push(objL);
+          }
+          if(element.totalPractice > 0){
+            this.attendancePractice.push(objP);
+          }
+          if(element.totalTheory > 0){
+            this.attendanceTheory.push(objT);
+          }
+        })
+        return;
+      },
+      updateTotalAttendance(attendance)
+      {
+          this.series.length = 0;
+          var totalAttendance = (attendance["visitedLab"] + attendance["visitedPractice"] +attendance["visitedTheory"])  * 100.0
+                           / (attendance["totalLab"] + attendance["totalPractice"] + attendance["totalTheory"]);
+          this.series.push(totalAttendance.toFixed(1));
+          this.series.push(attendance["attendanceLab"]);
+          this.series.push(attendance["attendancePractice"]);
+          this.series.push(attendance["attendanceTheory"]);
+          return;
       }
-    }
+    },
+    created() {
+      const headers = { ...authHeader() };
+      var userId = JSON.parse(localStorage.getItem("user"))["userName"]["id"];
+      axios.get("/api/stats/GetStudentStatTotal/" + userId ,{ headers: headers})
+        .then(response => {
+          this.updateTotalAttendance(response["data"]);
+      })
+      
+      axios.get("/api/stats/GetStudentStat/" + userId ,{ headers: headers})
+        .then(response => {
+          this.updateAttendance(response["data"])
+        })
+    },
 };
 </script>
