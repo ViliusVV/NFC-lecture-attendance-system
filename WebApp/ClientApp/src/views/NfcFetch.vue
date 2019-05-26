@@ -2,8 +2,8 @@
   <v-container fluid>
     <v-slide-y-transition mode="out-in">
       <v-layout column>
-        <h1>NFC fetch</h1>
-        <p>This component demonstrates fetching data from the server.</p>
+        <h1>NFC kortelių skenavimai</h1>
+        <p>Čia galima atrasti visus kortelių nuskenavimo įvykius.</p>
 
         <v-data-table
             :headers="headers"
