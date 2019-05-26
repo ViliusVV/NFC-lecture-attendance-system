@@ -28,6 +28,8 @@ import {
   VAvatar,
   VChip,
   VAlert,
+  VProgressCircular,
+  VExpansionPanel,
 } from 'vuetify'
 import 'vuetify/src/stylus/app.styl'
 import lt from './lt-locale'
@@ -61,6 +63,8 @@ Vue.use(Vuetify, {
     VAvatar,
     VChip,
     VAlert,
+    VProgressCircular,
+    VExpansionPanel,
   },
   theme: {
     primary: '#1976D2',

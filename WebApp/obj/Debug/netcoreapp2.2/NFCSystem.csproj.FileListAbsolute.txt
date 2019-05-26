@@ -22,3 +22,75 @@ c:\Users\Vilius\Documents\GitHub\NFC-lecture-attendance-system\WebApp\obj\Debug\
 c:\Users\Vilius\Documents\GitHub\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.dll
 c:\Users\Vilius\Documents\GitHub\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.pdb
 C:\Users\Vilius\Documents\GitHub\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.csproj.CopyComplete
+C:\Users\Dovydas\Documents\4_Semestras\Semestro_Projektas\new login\NFC-lecture-attendance-system\WebApp\bin\Debug\netcoreapp2.2\NFCSystem.deps.json
+C:\Users\Dovydas\Documents\4_Semestras\Semestro_Projektas\new login\NFC-lecture-attendance-system\WebApp\bin\Debug\netcoreapp2.2\NFCSystem.runtimeconfig.json
+C:\Users\Dovydas\Documents\4_Semestras\Semestro_Projektas\new login\NFC-lecture-attendance-system\WebApp\bin\Debug\netcoreapp2.2\NFCSystem.runtimeconfig.dev.json
+C:\Users\Dovydas\Documents\4_Semestras\Semestro_Projektas\new login\NFC-lecture-attendance-system\WebApp\bin\Debug\netcoreapp2.2\NFCSystem.dll
+C:\Users\Dovydas\Documents\4_Semestras\Semestro_Projektas\new login\NFC-lecture-attendance-system\WebApp\bin\Debug\netcoreapp2.2\NFCSystem.pdb
+C:\Users\Dovydas\Documents\4_Semestras\Semestro_Projektas\new login\NFC-lecture-attendance-system\WebApp\bin\Debug\netcoreapp2.2\NFCSystem.Views.dll
+C:\Users\Dovydas\Documents\4_Semestras\Semestro_Projektas\new login\NFC-lecture-attendance-system\WebApp\bin\Debug\netcoreapp2.2\NFCSystem.Views.pdb
+C:\Users\Dovydas\Documents\4_Semestras\Semestro_Projektas\new login\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.csprojAssemblyReference.cache
+C:\Users\Dovydas\Documents\4_Semestras\Semestro_Projektas\new login\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.csproj.CoreCompileInputs.cache
+C:\Users\Dovydas\Documents\4_Semestras\Semestro_Projektas\new login\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.RazorAssemblyInfo.cache
+C:\Users\Dovydas\Documents\4_Semestras\Semestro_Projektas\new login\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.RazorAssemblyInfo.cs
+C:\Users\Dovydas\Documents\4_Semestras\Semestro_Projektas\new login\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.AssemblyInfoInputs.cache
+C:\Users\Dovydas\Documents\4_Semestras\Semestro_Projektas\new login\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.AssemblyInfo.cs
+C:\Users\Dovydas\Documents\4_Semestras\Semestro_Projektas\new login\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.TagHelpers.input.cache
+C:\Users\Dovydas\Documents\4_Semestras\Semestro_Projektas\new login\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.TagHelpers.output.cache
+C:\Users\Dovydas\Documents\4_Semestras\Semestro_Projektas\new login\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.RazorCoreGenerate.cache
+C:\Users\Dovydas\Documents\4_Semestras\Semestro_Projektas\new login\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\Razor\Pages\Error.g.cshtml.cs
+C:\Users\Dovydas\Documents\4_Semestras\Semestro_Projektas\new login\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\Razor\Pages\_ViewImports.g.cshtml.cs
+C:\Users\Dovydas\Documents\4_Semestras\Semestro_Projektas\new login\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.RazorTargetAssemblyInfo.cache
+C:\Users\Dovydas\Documents\4_Semestras\Semestro_Projektas\new login\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.RazorTargetAssemblyInfo.cs
+C:\Users\Dovydas\Documents\4_Semestras\Semestro_Projektas\new login\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.Views.pdb
+C:\Users\Dovydas\Documents\4_Semestras\Semestro_Projektas\new login\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.dll
+C:\Users\Dovydas\Documents\4_Semestras\Semestro_Projektas\new login\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.pdb
+C:\Users\Dovydas\Documents\4_Semestras\Semestro_Projektas\new login\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.csproj.CopyComplete
+D:\Documents\GitHub\nfcz\NFC-lecture-attendance-system\WebApp\bin\Debug\netcoreapp2.2\NFCSystem.deps.json
+D:\Documents\GitHub\nfcz\NFC-lecture-attendance-system\WebApp\bin\Debug\netcoreapp2.2\NFCSystem.runtimeconfig.json
+D:\Documents\GitHub\nfcz\NFC-lecture-attendance-system\WebApp\bin\Debug\netcoreapp2.2\NFCSystem.runtimeconfig.dev.json
+D:\Documents\GitHub\nfcz\NFC-lecture-attendance-system\WebApp\bin\Debug\netcoreapp2.2\NFCSystem.dll
+D:\Documents\GitHub\nfcz\NFC-lecture-attendance-system\WebApp\bin\Debug\netcoreapp2.2\NFCSystem.pdb
+D:\Documents\GitHub\nfcz\NFC-lecture-attendance-system\WebApp\bin\Debug\netcoreapp2.2\NFCSystem.Views.dll
+D:\Documents\GitHub\nfcz\NFC-lecture-attendance-system\WebApp\bin\Debug\netcoreapp2.2\NFCSystem.Views.pdb
+D:\Documents\GitHub\nfcz\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.csprojAssemblyReference.cache
+D:\Documents\GitHub\nfcz\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.csproj.CoreCompileInputs.cache
+D:\Documents\GitHub\nfcz\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.RazorAssemblyInfo.cache
+D:\Documents\GitHub\nfcz\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.RazorAssemblyInfo.cs
+D:\Documents\GitHub\nfcz\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.AssemblyInfoInputs.cache
+D:\Documents\GitHub\nfcz\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.AssemblyInfo.cs
+D:\Documents\GitHub\nfcz\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.TagHelpers.input.cache
+D:\Documents\GitHub\nfcz\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.TagHelpers.output.cache
+D:\Documents\GitHub\nfcz\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.RazorCoreGenerate.cache
+D:\Documents\GitHub\nfcz\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\Razor\Pages\Error.g.cshtml.cs
+D:\Documents\GitHub\nfcz\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\Razor\Pages\_ViewImports.g.cshtml.cs
+D:\Documents\GitHub\nfcz\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.RazorTargetAssemblyInfo.cache
+D:\Documents\GitHub\nfcz\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.RazorTargetAssemblyInfo.cs
+D:\Documents\GitHub\nfcz\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.Views.pdb
+D:\Documents\GitHub\nfcz\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.dll
+D:\Documents\GitHub\nfcz\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.pdb
+D:\Documents\GitHub\nfcz\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.csproj.CopyComplete
+C:\Users\Armandas\Desktop\NFc\NFC-lecture-attendance-system\WebApp\bin\Debug\netcoreapp2.2\NFCSystem.deps.json
+C:\Users\Armandas\Desktop\NFc\NFC-lecture-attendance-system\WebApp\bin\Debug\netcoreapp2.2\NFCSystem.runtimeconfig.json
+C:\Users\Armandas\Desktop\NFc\NFC-lecture-attendance-system\WebApp\bin\Debug\netcoreapp2.2\NFCSystem.runtimeconfig.dev.json
+C:\Users\Armandas\Desktop\NFc\NFC-lecture-attendance-system\WebApp\bin\Debug\netcoreapp2.2\NFCSystem.dll
+C:\Users\Armandas\Desktop\NFc\NFC-lecture-attendance-system\WebApp\bin\Debug\netcoreapp2.2\NFCSystem.pdb
+C:\Users\Armandas\Desktop\NFc\NFC-lecture-attendance-system\WebApp\bin\Debug\netcoreapp2.2\NFCSystem.Views.dll
+C:\Users\Armandas\Desktop\NFc\NFC-lecture-attendance-system\WebApp\bin\Debug\netcoreapp2.2\NFCSystem.Views.pdb
+C:\Users\Armandas\Desktop\NFc\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.csprojAssemblyReference.cache
+C:\Users\Armandas\Desktop\NFc\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.csproj.CoreCompileInputs.cache
+C:\Users\Armandas\Desktop\NFc\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.RazorAssemblyInfo.cache
+C:\Users\Armandas\Desktop\NFc\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.RazorAssemblyInfo.cs
+C:\Users\Armandas\Desktop\NFc\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.AssemblyInfoInputs.cache
+C:\Users\Armandas\Desktop\NFc\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.AssemblyInfo.cs
+C:\Users\Armandas\Desktop\NFc\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.TagHelpers.input.cache
+C:\Users\Armandas\Desktop\NFc\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.TagHelpers.output.cache
+C:\Users\Armandas\Desktop\NFc\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.RazorCoreGenerate.cache
+C:\Users\Armandas\Desktop\NFc\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\Razor\Pages\Error.g.cshtml.cs
+C:\Users\Armandas\Desktop\NFc\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\Razor\Pages\_ViewImports.g.cshtml.cs
+C:\Users\Armandas\Desktop\NFc\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.RazorTargetAssemblyInfo.cache
+C:\Users\Armandas\Desktop\NFc\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.RazorTargetAssemblyInfo.cs
+C:\Users\Armandas\Desktop\NFc\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.Views.pdb
+C:\Users\Armandas\Desktop\NFc\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.dll
+C:\Users\Armandas\Desktop\NFc\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.pdb
+C:\Users\Armandas\Desktop\NFc\NFC-lecture-attendance-system\WebApp\obj\Debug\netcoreapp2.2\NFCSystem.csproj.CopyComplete
