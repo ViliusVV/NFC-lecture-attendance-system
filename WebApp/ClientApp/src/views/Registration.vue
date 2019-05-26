@@ -1,7 +1,7 @@
 <template>
   <v-dialog v-model="dialog" persistent max-width="600px">
     <template v-slot:activator="{ on }">
-      <v-btn color="primary" dark v-on="on">Registruotis</v-btn>
+      <v-btn color="primary" dark v-on="on">Užregistruoti naują vartotoją</v-btn>
     </template>
     <v-card class="elevation-12">
       <v-toolbar dark color="primary">
