@@ -1,8 +1,7 @@
 <template>
   <v-layout>
-    <div style="margin-left: -5%">
-      <v-flex xs12 sm4 offset-sm3>
-        <v-card width="450" class="elevation-4">
+    <div style="margin-left: 1%; margin-top: 1%; float:left; clear:left">
+        <v-card width="600" class="elevation-4">
           <v-card-title primary-title>
             <h3 align="center" class="headline mb-0">Bendras lankomumas</h3>
           </v-card-title>
@@ -10,9 +9,8 @@
             <apexchart type="radialBar" height="350" :options="chartOptions" :series="series"/>
           </div>
         </v-card>
-      </v-flex>
     </div>
-    <div style="margin-left: 10%">
+    <div style="margin-left: 1%; margin-top: 1%">
       <v-expansion-panel expand>
         <v-expansion-panel-content v-for="(item,i) in 1" :key="i">
           <template v-slot:header>
@@ -26,10 +24,10 @@
             >
               <v-progress-circular
                 style="margin-left: 5%"
-                :size="200"
+                :size="150"
                 :value="item.attendance"
                 color="green"
-                :width="10"
+                :width="15"
               >{{item.title}} {{item.attendance}}%</v-progress-circular>&nbsp;
             </div>
           </v-layout>
@@ -46,10 +44,10 @@
             >
               <v-progress-circular
                 style="margin-left: 5%"
-                :size="130"
+                :size="150"
                 :value="item.attendance"
                 color="red"
-                :width="10"
+                :width="15"
               >{{item.title}} {{item.attendance}}%</v-progress-circular>&nbsp;
             </div>
           </v-layout>
@@ -67,10 +65,10 @@
             >
               <v-progress-circular
                 style="margin-left: 5%"
-                :size="130"
+                :size="150"
                 :value="item.attendance"
                 color="blue"
-                :width="10"
+                :width="15"
               >{{item.title}} {{item.attendance}}%</v-progress-circular>&nbsp;
             </div>
           </v-layout>
