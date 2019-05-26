@@ -84,6 +84,45 @@ namespace NFCSystem.Controllers
             return Ok(stats);
         }
 
+        // GET api/stats/getgroupstat/{id}
+        [HttpGet("[action]/{group}")]
+        public async Task<ActionResult<List<StudentStatDTO>>> GetGroupStat(string group)
+        {
+            List<StudentStatDTO> stats = new List<StudentStatDTO>();
+            StudentStatDTO stat = new StudentStatDTO();
+            group = group.Replace("_","/");
+
+            DateTime currentDate = DateTime.Now.Date;
+            // Get all studenss in gruop
+            var students = await _context.Users.Where(s => s.Group == group).Select(w => w.Id).ToListAsync();
+            
+            
+            // Get all timetables till yesterday
+            var timetable = await _context.Timetables.Where(
+                x => students.Contains(x.StudentId)
+                && DateTime.Compare(x.Date.Date, currentDate) < 0)
+                .ToListAsync();
+
+            if (timetable.Count == 0)
+            {
+                return NotFound();
+            }
+
+            var lectureIds = timetable.GroupBy(x => x.CourseId).Select(g => g.First()).Select(a => a.CourseId).ToList();
+
+            for(int i = 0; i < lectureIds.Count; i++)
+            {
+                StudentStatDTO tmpStud  = new StudentStatDTO();
+                var courseTimetable = timetable.Where(c => c.CourseId == lectureIds[i]).ToList();
+                tmpStud = GetCourseStat(courseTimetable);
+                tmpStud.LectureID = lectureIds[i];
+                tmpStud.LectureName = await _context.Courses.Where(c => c.CourseId == lectureIds[i]).Select(c => c.CourseName).FirstOrDefaultAsync();
+                stats.Add(tmpStud);
+            }
+
+            return Ok(stats);
+        }
+
         public StudentStatDTO GetCourseStat(List<Timetable> timetable)
         {
             StudentStatDTO stat = new StudentStatDTO();
