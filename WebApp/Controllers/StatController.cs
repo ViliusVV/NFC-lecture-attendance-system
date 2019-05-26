@@ -43,6 +43,51 @@ namespace NFCSystem.Controllers
             {
                 return NotFound();
             }
+            
+            stat = GetCourseStat(timetable);
+
+            return Ok(stat);
+        }
+
+        // GET api/stats/getstudentstat/{id}
+        [HttpGet("[action]/{id}")]
+        public async Task<ActionResult<List<StudentStatDTO>>> GetStudentStat(string id)
+        {
+            List<StudentStatDTO> stats = new List<StudentStatDTO>();
+            StudentStatDTO stat = new StudentStatDTO();
+
+            DateTime currentDate = DateTime.Now.Date;
+            
+            // Get all timetables till yesterday
+            var timetable = await _context.Timetables.Where(
+                x => x.StudentId == id
+                && DateTime.Compare(x.Date.Date, currentDate) < 0)
+                .ToListAsync();
+
+            if (timetable.Count == 0)
+            {
+                return NotFound();
+            }
+
+            var lectureIds = timetable.GroupBy(x => x.CourseId).Select(g => g.First()).Select(a => a.CourseId).ToList();
+
+            for(int i = 0; i < lectureIds.Count; i++)
+            {
+                StudentStatDTO tmpStud  = new StudentStatDTO();
+                var courseTimetable = timetable.Where(c => c.CourseId == lectureIds[i]).ToList();
+                tmpStud = GetCourseStat(courseTimetable);
+                tmpStud.LectureID = lectureIds[i];
+                tmpStud.LectureName = await _context.Courses.Where(c => c.CourseId == lectureIds[i]).Select(c => c.CourseName).FirstOrDefaultAsync();
+                stats.Add(tmpStud);
+            }
+
+            return Ok(stats);
+        }
+
+        public StudentStatDTO GetCourseStat(List<Timetable> timetable)
+        {
+            StudentStatDTO stat = new StudentStatDTO();
+            DateTime currentDate = DateTime.Now.Date;
 
             var onlyTheory = timetable.Where(x => x.LectureType == Timetable.Types.Teorija).ToList();
             if (onlyTheory.Count != 0)
@@ -88,65 +133,7 @@ namespace NFCSystem.Controllers
                 stat.VisitedLab = 0;
                 stat.AttendanceLab = 100;
             }
-
-            return Ok(stat);
-        }
-
-        // GET api/stats/getstudentstat/{id}
-        [HttpGet("[action]/{id}")]
-        public async Task<ActionResult<IEnumerable<StudentStatDTO>>> GetStudentStat(string id)
-        {
-            List<StudentStatDTO> stats = new List<StudentStatDTO>();
-            StudentStatDTO stat = new StudentStatDTO();
-
-            DateTime currentDate = DateTime.Now.Date;
-            
-            // Get all timetables till yesterday
-            var timetable = await _context.Timetables.Where(
-                x => x.StudentId == id
-                && DateTime.Compare(x.Date.Date, currentDate) < 0)
-                .ToListAsync();
-
-            if (timetable.Count == 0)
-            {
-                return NotFound();
-            }
-
-            var lectureIds = timetable.GroupBy(x => x.CourseId).Select(g => g.First()).Select(a => a.CourseId).ToList();
-            var lectures = await _context.Courses.Where(course => lectureIds.Any(lid => lid == course.CourseId)).Select(c => c.CourseName).ToListAsync();
- 
-            var tmp = lectures;
-            for(int i = 0; i < lectureIds.Count; i++)
-            {
-                StudentStatDTO tmpStud  = new StudentStatDTO();
-                tmpStud.LectureID = lectureIds[i];
-                tmpStud.LectureName = lectures[i];
-                stats.Append(tmpStud);
-            }
-
-
-            // Get all different lectures whitc
-
-
-
-
-
-            // foreach (var lecture in timetable)
-            // {
-            //     lectures.Add(new Lecture()
-            //     {
-            //         StudentId = id,
-            //         Title = lecture.CourseId + " " + _context.Courses.FirstOrDefault(x => x.CourseId == lecture.CourseId).CourseName,
-            //         Details = _context.Periods.FirstOrDefault(x => x.PeriodId == lecture.PeriodId).PeriodStartTime + " - " + 
-            //             _context.Periods.FirstOrDefault(x => x.PeriodId == lecture.PeriodId).PeriodEndTime + "<br>" + 
-            //             lecture.LectureType + "<br>" + _context.Classrooms.FirstOrDefault(x => x.ClassroomId == lecture.ClassroomId).ClassLocation + " r.-" + 
-            //             _context.Classrooms.FirstOrDefault(x => x.ClassroomId == lecture.ClassroomId).ClassLabel,
-            //         Start = Convert.ToDateTime(lecture.Date.ToString("yyyy-MM-dd") + "T" + _context.Periods.FirstOrDefault(x => x.PeriodId == lecture.PeriodId).PeriodStartTime),
-            //         Finish = Convert.ToDateTime(lecture.Date.ToString("yyyy-MM-dd") + "T" + _context.Periods.FirstOrDefault(x => x.PeriodId == lecture.PeriodId).PeriodEndTime),
-            //         IsVisited = lecture.isVisited, 
-            //     });
-            // }
-            return Ok(stats);
+            return stat;
         }
     }
 }
