@@ -1,27 +1,34 @@
 <template>
-  <v-layout>
-    <div>
-      <v-tooltip bottom>
-          <template v-slot:activator="{ on }">
-            <div v-on="on">
-            <v-autocomplete
-              v-model="select"              
-              :loading="loading"
-              :items="items"
-              :search-input.sync="search"
-              cache-items
-              flat
-              hide-no-data
-              hide-details
-              label="Įveskite studento VIDKO arba vardą ir pavardę"
-            ></v-autocomplete> 
-            </div>             
-          </template>
-        <span>Įveskite studento VIDKO arba vardą ir pavardę</span>
-      </v-tooltip>
-    </div>
-    <div style="margin-left: 1%; margin-top: 1%" v-if="fetched">
-        <v-card width="600" class="elevation-4">
+  <v-container fluid>
+    <v-layout row>
+      <v-flex pa-2 >
+        <v-card>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on }">
+              <div v-on="on">
+                <v-autocomplete
+                    v-model="select"              
+                    :loading="loading"
+                    :items="items"
+                    :search-input.sync="search"
+                    cache-items
+                    flat
+                    hide-no-data
+                    hide-details
+                    label="Įveskite studento VIDKO arba vardą ir pavardę"
+                ></v-autocomplete> 
+              </div>             
+            </template>
+            <span>Įveskite studento VIDKO arba vardą ir pavardę</span>
+          </v-tooltip>
+        </v-card>
+      </v-flex>
+    </v-layout >
+
+
+    <v-layout offset-xs2 pa-2 row >
+      <v-flex>
+          <v-card  class="elevation-4">
           <v-card-title primary-title>
             <h3 align="center" class="headline mb-0">Bendras lankomumas</h3>
           </v-card-title>
@@ -29,9 +36,12 @@
             <apexchart type="radialBar" height="350" :options="chartOptions" :series="series"/>
           </div>
         </v-card>
-    </div>
-    <div style="margin-left: 1%; margin-top: 1%" v-if="fetched">
-      <v-expansion-panel expand>
+      </v-flex>
+    </v-layout>
+
+    <v-layout pa-2 row>
+      <v-flex>
+        <v-expansion-panel expand>
         <v-expansion-panel-content v-for="(item,i) in 1" :key="i">
           <template v-slot:header>
             <div>Laboratorinai darbai</div>
@@ -44,7 +54,7 @@
             >
               <v-progress-circular
                 style="margin-left: 5%"
-                :size="150"
+                :size="180"
                 :value="item.attendance"
                 color="green"
                 :width="15"
@@ -64,7 +74,7 @@
             >
               <v-progress-circular
                 style="margin-left: 5%"
-                :size="150"
+                :size="180"
                 :value="item.attendance"
                 color="red"
                 :width="15"
@@ -85,7 +95,7 @@
             >
               <v-progress-circular
                 style="margin-left: 5%"
-                :size="150"
+                :size="180"
                 :value="item.attendance"
                 color="blue"
                 :width="15"
@@ -94,8 +104,9 @@
           </v-layout>
         </v-expansion-panel-content>
       </v-expansion-panel>
-    </div>
-  </v-layout>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 
@@ -165,7 +176,7 @@ export default {
                   startAngle: 0,
                   endAngle: 270,
                   hollow: {
-                    margin: 5,
+                    margin: 3,
                     size: '30%',
                     background: 'transparent',
                     image: undefined,
