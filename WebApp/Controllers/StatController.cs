@@ -1,4 +1,6 @@
-﻿using System;
+﻿using System.Net.Security;
+using System.Collections.Immutable;
+using System;
 using System.Security.Cryptography.X509Certificates;
 using System.Net;
 using Microsoft.EntityFrameworkCore;
@@ -25,9 +27,9 @@ namespace NFCSystem.Controllers
             _context = context;
         }
 
-        // GET api/lectures/5
+        // GET api/stats/getstudentstattotal/{id}
         [HttpGet("[action]/{id}")]
-        public async Task<ActionResult<StudentStatDTO>> GetStudentStatsTotal(string id)
+        public async Task<ActionResult<StudentStatDTO>> GetStudentStatTotal(string id)
         {
             StudentStatDTO stat = new StudentStatDTO();
             DateTime currentDate = DateTime.Now.Date;
@@ -37,7 +39,7 @@ namespace NFCSystem.Controllers
                 && DateTime.Compare(x.Date.Date, currentDate) < 0)
                 .ToListAsync();
 
-            if (timetable == null)
+            if (timetable.Count == 0)
             {
                 return NotFound();
             }
@@ -48,7 +50,7 @@ namespace NFCSystem.Controllers
                 var visitedTheory = onlyTheory.Where(x => x.isVisited).ToList();
                 stat.TotalTheory = onlyTheory.Count;
                 stat.VisitedTheory = visitedTheory.Count;
-                stat.AttendanceTheory = (int)((float)stat.VisitedTheory / stat.TotalTheory * 100);
+                stat.AttendanceTheory = Math.Round((double)stat.VisitedTheory / stat.TotalTheory * 100, 1);
             }
             else
             {
@@ -63,7 +65,7 @@ namespace NFCSystem.Controllers
                 var visitedPractice = onlyPractice.Where(x => x.isVisited).ToList();
                 stat.TotalPractice = onlyPractice.Count;
                 stat.VisitedPractice = visitedPractice.Count;
-                stat.AttendancePractice = (int)((float)stat.VisitedPractice / stat.TotalPractice * 100);
+                stat.AttendancePractice = Math.Round((double)stat.VisitedPractice / stat.TotalPractice * 100, 1);
             }
             else
             {
@@ -78,7 +80,7 @@ namespace NFCSystem.Controllers
                 var visitedLab = onlyLab.Where(x => x.isVisited).ToList();
                 stat.TotalLab = onlyLab.Count;
                 stat.VisitedLab = visitedLab.Count;
-                stat.AttendanceLab = (int)((float)stat.VisitedLab / stat.TotalLab * 100);
+                stat.AttendanceLab = Math.Round((double)stat.VisitedLab / stat.TotalLab * 100,1);
             }
             else
             {
@@ -87,9 +89,46 @@ namespace NFCSystem.Controllers
                 stat.AttendanceLab = 100;
             }
 
+            return Ok(stat);
+        }
 
-
+        // GET api/stats/getstudentstat/{id}
+        [HttpGet("[action]/{id}")]
+        public async Task<ActionResult<IEnumerable<StudentStatDTO>>> GetStudentStat(string id)
+        {
             List<StudentStatDTO> stats = new List<StudentStatDTO>();
+            StudentStatDTO stat = new StudentStatDTO();
+
+            DateTime currentDate = DateTime.Now.Date;
+            
+            // Get all timetables till yesterday
+            var timetable = await _context.Timetables.Where(
+                x => x.StudentId == id
+                && DateTime.Compare(x.Date.Date, currentDate) < 0)
+                .ToListAsync();
+
+            if (timetable.Count == 0)
+            {
+                return NotFound();
+            }
+
+            var lectureIds = timetable.GroupBy(x => x.CourseId).Select(g => g.First()).Select(a => a.CourseId).ToList();
+            var lectures = await _context.Courses.Where(course => lectureIds.Any(lid => lid == course.CourseId)).Select(c => c.CourseName).ToListAsync();
+ 
+            var tmp = lectures;
+            for(int i = 0; i < lectureIds.Count; i++)
+            {
+                StudentStatDTO tmpStud  = new StudentStatDTO();
+                tmpStud.LectureID = lectureIds[i];
+                tmpStud.LectureName = lectures[i];
+                stats.Append(tmpStud);
+            }
+
+
+            // Get all different lectures whitc
+
+
+
 
 
             // foreach (var lecture in timetable)
@@ -107,7 +146,7 @@ namespace NFCSystem.Controllers
             //         IsVisited = lecture.isVisited, 
             //     });
             // }
-            return Ok(stat);
+            return Ok(stats);
         }
     }
 }

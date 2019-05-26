@@ -28,7 +28,6 @@ import {
   VAvatar,
   VChip,
   VAlert,
-  VProgressCircular,
   VExpansionPanel,
 } from 'vuetify'
 import 'vuetify/src/stylus/app.styl'
@@ -63,7 +62,6 @@ Vue.use(Vuetify, {
     VAvatar,
     VChip,
     VAlert,
-    VProgressCircular,
     VExpansionPanel,
   },
   theme: {

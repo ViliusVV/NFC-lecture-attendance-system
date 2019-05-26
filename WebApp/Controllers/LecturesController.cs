@@ -51,7 +51,7 @@ namespace NFCSystem.Controllers
                     IsVisited = lecture.isVisited, 
                 });
             }
-            return lectures;
+            return lectures.OrderBy(l => l.Start).ToList();
         }
 
 
