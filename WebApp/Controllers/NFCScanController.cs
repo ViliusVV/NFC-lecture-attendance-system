@@ -70,7 +70,7 @@ namespace NFCSystem.Controllers
         {   
             // Find related timetable element by deviceId, UID and time
             // Find classroom
-            var classRoom = await _context.Devices.Where(d => d.DeviceId == item.DeviceId).FirstOrDefaultAsync();
+            var classRoom = await _context.Devices.Where(d => d.DeviceIdReal == item.DeviceId).FirstOrDefaultAsync();
             // Find student
             var stud = await _context.Users.Where(u => u.UID == item.UID).FirstOrDefaultAsync();
             // Find period
@@ -89,10 +89,11 @@ namespace NFCSystem.Controllers
                     t.Date.Date == item.TimeStamp.Date && 
                     t.PeriodId == period.PeriodId)
                 .FirstOrDefaultAsync();
-            // Mark visit
-            timetable.isVisited = true;
-            
-            _context.Timetables.Update(timetable);
+                // Mark visit
+                if(timetable != null){
+                    timetable.isVisited = true;
+                    _context.Timetables.Update(timetable);
+                }
             }
             _context.NFCScans.Add(item);
             await _context.SaveChangesAsync();
