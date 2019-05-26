@@ -75,7 +75,7 @@ export default class App extends Vue {
   private itemsStudent = [
     { title: 'Pagrindinis', icon: 'home', link: '/home' },
     { title: 'Tvarkaraštis', icon: 'date_range', link: '/timetable' },
-    { title: 'Statistika (grafikai)', icon: 'timeline', link: '/statistics' },
+    { title: 'Statistika ', icon: 'timeline', link: '/statistics' },
     { title: 'Nustatymai', icon: 'settings', link: '/settings' },
   ];
   private itemsAdmin = [
@@ -84,14 +84,16 @@ export default class App extends Vue {
     { title: 'Naudotojų sąrašas', icon: 'supervised_user_circle', link: '/getusers' },
     { title: 'Tvarkaraščiai', icon: 'date_range', link: '/timetable' },
     { title: 'Įrenginiai', icon: 'scanner', link: '/device-fetch' },
-    { title: 'Statistika (grafikai)', icon: 'timeline', link: '/statisticsadmin' },
+    { title: 'Statistika ', icon: 'timeline', link: '/statisticsadmin' },
+    { title: 'Grupių statistika', icon: 'timeline', link: '/statisticsgroup' },
   ];
   private itemsLecturer = [
     { title: 'Pagrindinis', icon: 'home', link: '/home' },
     { title: 'NFC skenavimai', icon: 'nfc', link: '/nfc-fetch' },
     { title: 'Naudotojų sąrašas', icon: 'supervised_user_circle', link: '/user-list' },
     { title: 'Tvarkaraščiai', icon: 'date_range', link: '/timetable' },
-    { title: 'Statistika (grafikai)', icon: 'timeline', link: '/statisticsadmin' },
+    { title: 'Statistika', icon: 'timeline', link: '/statisticsadmin' },
+    { title: 'Grupių statistika', icon: 'timeline', link: '/statisticsgroup' },
   ];
 
   private myRole()

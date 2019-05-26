@@ -26,6 +26,13 @@ namespace NFCSystem.Controllers
             return await _context.Users.ToListAsync();
         }
 
+        // GET: api/Todo
+        [HttpGet("[action]")]
+        public async Task<ActionResult<IEnumerable<string>>> GetGroups()
+        {
+            return await _context.Users.Select(u => u.Group).Distinct().ToListAsync();
+        }
+
         // GET: api/Todo/5
         [HttpGet("[action]/{id}")]
         public async Task<ActionResult<ApplicationUser>> GetUser(string id)

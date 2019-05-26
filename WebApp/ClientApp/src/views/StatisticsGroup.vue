@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <v-layout row>
+        <v-layout row>
       <v-flex pa-2 >
         <v-card>
           <v-tooltip bottom>
@@ -15,7 +15,7 @@
                     flat
                     hide-no-data
                     hide-details
-                    label="Įveskite studento VIDKO arba vardą ir pavardę"
+                    label="Įveskite studentų grupę"
                 ></v-autocomplete> 
               </div>             
             </template>
@@ -24,7 +24,6 @@
         </v-card>
       </v-flex>
     </v-layout >
-
 
     <v-layout v-if="fetched" offset-xs2 pa-2 row >
       <v-flex>
@@ -228,23 +227,18 @@ export default {
         val && val !== this.select && this.querySelections(val);
 
         if(this.select !== null) {
-          //if student is selected, gets his VIDKO code from input
-          const studentCode = this.select.substring(0, this.select.indexOf(" "));
-          //then gets his id, by his VIDKO code
-          axios.get(`api/userlist/getuserid/${studentCode}`)
-            .then(response => {
+          console.log(this.select)
                 const headers = { ...authHeader() };
-                axios.get("/api/stats/GetStudentStatTotal/" + response.data ,{ headers: headers})
+                axios.get("/api/stats/GetGroupTotalStat/" + this.select.replace("/", "_") ,{ headers: headers})
                   .then(response => {
                     this.updateTotalAttendance(response["data"]);
                 })
                 
-                axios.get("/api/stats/GetStudentStat/" + response.data ,{ headers: headers})
+                axios.get("/api/stats/GetGroupStat/" + this.select.replace("/", "_") ,{ headers: headers})
                   .then(response => {
                     this.updateAttendance(response["data"])
                   })
             this.fetched = true;
-            });
         }
       }
     },
@@ -253,11 +247,11 @@ export default {
       // metodas, kuris pakeicia state objekto reiksme i paduodama per argumenta
       querySelections (v) {
         this.loading = true
-        axios.get(`api/userlist/getusers`)
+        axios.get(`api/userlist/getgroups`)
         .then(response => {
           const users = response.data
           users.forEach(element => {
-            this.items.push(element.studentCode + " - " + element.name + " " + element.surname)
+            this.items.push(element)
           })
           this.loading = false
         })

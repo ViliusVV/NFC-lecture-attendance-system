@@ -183,7 +183,7 @@ bool pollSettingsGet()
           }
           else
           {
-            beep(3, 50);
+            beep(3, 100);
             http.end();
             return false;
           }
@@ -253,7 +253,7 @@ bool sendPOSTRequest(String messageJson)
   else 
   {
     Serial.printf("[HTTP] POST... failed, error: %s\n", http.errorToString(httpCode).c_str());
-    beep(4, 100);
+    beep(4, 50);
     http.end();
     return false;
   }
@@ -363,6 +363,7 @@ void setupNFCReader()
   // Get info
   uint32_t versiondata = nfc.getFirmwareVersion();
   if (! versiondata) {
+    beep(5, 500);
     Serial.print("Didn't find PN53x board");
     while (1); // halt
   }
