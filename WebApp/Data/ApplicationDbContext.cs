@@ -35,13 +35,13 @@ namespace NFCSystem.Data
             // Configuration for Periods
             builder.Entity<Period>().HasKey(k => k.PeriodId);
             #if NEW_DB
-            builder.Entity<Period>().HasData(new Period{PeriodId=1, PeriodStartTime=new TimeSpan(9,0,0), PeriodEndTime=new TimeSpan(10,30,0)});
-            builder.Entity<Period>().HasData(new Period{PeriodId=2, PeriodStartTime=new TimeSpan(11,0,0), PeriodEndTime=new TimeSpan(12,30,0)});
-            builder.Entity<Period>().HasData(new Period{PeriodId=3, PeriodStartTime=new TimeSpan(13,30,0), PeriodEndTime=new TimeSpan(15,00,0)});
-            builder.Entity<Period>().HasData(new Period{PeriodId=4, PeriodStartTime=new TimeSpan(15,30,0), PeriodEndTime=new TimeSpan(17,00,0)});
-            builder.Entity<Period>().HasData(new Period{PeriodId=5, PeriodStartTime=new TimeSpan(17,30,0), PeriodEndTime=new TimeSpan(19,00,0)});
-            builder.Entity<Period>().HasData(new Period{PeriodId=6, PeriodStartTime=new TimeSpan(19,30,0), PeriodEndTime=new TimeSpan(21,00,0)});
-            builder.Entity<Period>().HasData(new Period{PeriodId=7, PeriodStartTime=new TimeSpan(7,30,0), PeriodEndTime=new TimeSpan(8,59,0)});
+            builder.Entity<Period>().HasData(new Period{PeriodId=1, PeriodStartTime=new TimeSpan(7,30,0), PeriodEndTime=new TimeSpan(8,59,0)});
+            builder.Entity<Period>().HasData(new Period{PeriodId=2, PeriodStartTime=new TimeSpan(9,0,0), PeriodEndTime=new TimeSpan(10,30,0)});
+            builder.Entity<Period>().HasData(new Period{PeriodId=3, PeriodStartTime=new TimeSpan(11,0,0), PeriodEndTime=new TimeSpan(12,30,0)});
+            builder.Entity<Period>().HasData(new Period{PeriodId=4, PeriodStartTime=new TimeSpan(13,30,0), PeriodEndTime=new TimeSpan(15,00,0)});
+            builder.Entity<Period>().HasData(new Period{PeriodId=5, PeriodStartTime=new TimeSpan(15,30,0), PeriodEndTime=new TimeSpan(17,00,0)});
+            builder.Entity<Period>().HasData(new Period{PeriodId=6, PeriodStartTime=new TimeSpan(17,30,0), PeriodEndTime=new TimeSpan(19,00,0)});
+            builder.Entity<Period>().HasData(new Period{PeriodId=7, PeriodStartTime=new TimeSpan(19,30,0), PeriodEndTime=new TimeSpan(21,00,0)});
             #endif
 
             // Configuration for Courses
@@ -80,7 +80,7 @@ namespace NFCSystem.Data
             builder.Entity<Course>().HasData(new Course{CourseId="PB0030",CourseName="Bioinformatika"});
             builder.Entity<Course>().HasData(new Course{CourseId="PB0031",CourseName="Elektroninis verslas"});
             builder.Entity<Course>().HasData(new Course{CourseId="PB0032",CourseName="Elektros energetika"});
-            builder.Entity<Course>().HasData(new Course{CourseId="PB0033",CourseName="Elektro grandinių analizė 1"});
+            builder.Entity<Course>().HasData(new Course{CourseId="PB0033",CourseName="Elektros grandinių analizė 1"});
             builder.Entity<Course>().HasData(new Course{CourseId="PB0034",CourseName="Fizika 1"});
             builder.Entity<Course>().HasData(new Course{CourseId="PB0035",CourseName="Genų inžinerija"});
             builder.Entity<Course>().HasData(new Course{CourseId="PB0036",CourseName="Grafų teorija"});
@@ -277,12 +277,12 @@ namespace NFCSystem.Data
                         DateTime periodDate = new DateTime(2019, 3, rnd.Next(4, 9));
                         Tuple<DateTime, int> datetime = new Tuple<DateTime, int>(periodDate, periodID);
                         //randomly have lectures once every 1 or 2 weeks
-                        int increment = rnd.Next(1, 3);
+                        int increment = 1;
                         //add lectures from march to june
-                        for (int k = 0; k < 16; k += increment)
+                        for (int k = 0; k < 4; k += increment)
                         {
                             //if there weren't any lectures generated for this date and period
-                            if(!takenDates.Contains(datetime))
+                            if(!takenDates.Contains(new Tuple<DateTime, int> (periodDate, periodID)))
                             {
                                 builder.Entity<Timetable>( e => 
                                 {
@@ -290,7 +290,7 @@ namespace NFCSystem.Data
                                     StudentId=studId, ClassroomId=classID, Date=periodDate, 
                                     isVisited=rnd.NextDouble() > 0.5, LectureType=(Timetable.Types)h});
                                 });
-                                takenDates.Add(datetime);
+                                takenDates.Add(new Tuple<DateTime, int> (periodDate, periodID));
                             }
                             periodDate = periodDate.AddDays(7 * increment);
                         }
@@ -301,12 +301,12 @@ namespace NFCSystem.Data
                         DateTime periodDate = new DateTime(2019, 4, rnd.Next(1, 6));
                         Tuple<DateTime, int> datetime = new Tuple<DateTime, int>(periodDate, periodID);
                         //randomly have lectures once every 1 or 2 weeks
-                        int increment = rnd.Next(1, 3);
+                        int increment = 1;
                         //add lectures from march to june
-                        for (int k = 0; k < 16; k += increment)
+                        for (int k = 0; k < 4; k += increment)
                         {
                             //if there weren't any lectures generated for this date and period
-                            if(!takenDates.Contains(datetime))
+                            if(!takenDates.Contains(new Tuple<DateTime, int> (periodDate, periodID)))
                             {
                                 builder.Entity<Timetable>( e => 
                                 {
@@ -314,7 +314,7 @@ namespace NFCSystem.Data
                                     StudentId=studId, ClassroomId=classID, Date=periodDate, 
                                     isVisited=rnd.NextDouble() > 0.5, LectureType=(Timetable.Types)h});
                                 });
-                                takenDates.Add(datetime);
+                                takenDates.Add(new Tuple<DateTime, int> (periodDate, periodID));
                             }
                             periodDate = periodDate.AddDays(7 * increment);
                         }
@@ -325,12 +325,12 @@ namespace NFCSystem.Data
                         DateTime periodDate = new DateTime(2019, 5, rnd.Next(6, 11));
                         Tuple<DateTime, int> datetime = new Tuple<DateTime, int>(periodDate, periodID);
                         //randomly have lectures once every 1 or 2 weeks
-                        int increment = rnd.Next(1, 3);
+                        int increment = 1;
                         //add lectures from march to june
-                        for (int k = 0; k < 16; k += increment)
+                        for (int k = 0; k < 4; k += increment)
                         {
                             //if there weren't any lectures generated for this date and period
-                            if(!takenDates.Contains(datetime))
+                            if(!takenDates.Contains(new Tuple<DateTime, int> (periodDate, periodID)))
                             {
                                 builder.Entity<Timetable>( e => 
                                 {
@@ -338,7 +338,31 @@ namespace NFCSystem.Data
                                     StudentId=studId, ClassroomId=classID, Date=periodDate, 
                                     isVisited=rnd.NextDouble() > 0.5, LectureType=(Timetable.Types)h});
                                 });
-                                takenDates.Add(datetime);
+                                takenDates.Add(new Tuple<DateTime, int> (periodDate, periodID));
+                            }
+                            periodDate = periodDate.AddDays(7 * increment);
+                        }
+                    }
+                    for (int h = 0; h < lectureTypeC; h++ )
+                    {
+                        int periodID = rnd.Next(1, 8);
+                        DateTime periodDate = new DateTime(2019, 6, rnd.Next(3, 8));
+                        Tuple<DateTime, int> datetime = new Tuple<DateTime, int>(periodDate, periodID);
+                        //randomly have lectures once every 1 or 2 weeks
+                        int increment = 1;
+                        //add lectures from march to june
+                        for (int k = 0; k < 4; k += increment)
+                        {
+                            //if there weren't any lectures generated for this date and period
+                            if(!takenDates.Contains(new Tuple<DateTime, int> (periodDate, periodID)))
+                            {
+                                builder.Entity<Timetable>( e => 
+                                {
+                                    e.HasData(new Timetable{TimetableId=ttid++, CourseId=corseID, PeriodId=periodID, 
+                                    StudentId=studId, ClassroomId=classID, Date=periodDate, 
+                                    isVisited=rnd.NextDouble() > 0.5, LectureType=(Timetable.Types)h});
+                                });
+                                takenDates.Add(new Tuple<DateTime, int> (periodDate, periodID));
                             }
                             periodDate = periodDate.AddDays(7 * increment);
                         }
