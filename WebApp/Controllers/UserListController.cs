@@ -43,8 +43,10 @@ namespace NFCSystem.Controllers
         [HttpGet("[action]/{studentCode}")]
         public ActionResult<string> GetUserId(string studentCode)
         {
-            var id = _context.Users.FirstOrDefault(x => x.StudentCode == studentCode).Id;
-            return id;
+            var user = _context.Users.FirstOrDefault(x => x.StudentCode == studentCode);
+            if (user != null)
+                return user.Id;
+            return null;
         }
 
         // POST: api/Todo

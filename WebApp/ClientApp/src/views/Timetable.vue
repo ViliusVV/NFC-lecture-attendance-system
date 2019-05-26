@@ -196,8 +196,17 @@
       sm12
       lg9
       class="pl-3 mt-2"
+      v-if="fetched"
     >
       <v-sheet height="85vh">
+        <v-progress-circular
+          v-if="loadingLectures"
+          :size="70"
+          :width="7"
+          color="primary"
+          indeterminate
+          style="position: absolute; z-index: 99; left:45.5%; top: 43.2%"
+        ></v-progress-circular>
         <v-calendar
           locale="lt"
           ref="calendar"
@@ -381,7 +390,9 @@
       items: [],
       search: null,
       select: null,
-      isAdminOrLecturer: false
+      isAdminOrLecturer: false,
+      fetched: false,
+      loadingLectures: false,
     }),
     computed: {
       intervalStyle () {
@@ -405,11 +416,13 @@
     },
     created () {
       const userData = JSON.parse(localStorage.getItem("user"));
-      const userId =  userData.userName.id;      
+      const userId =  userData.userName.id;   
       this.fetchLectures(`api/lectures/${userId}`);
       
       if(userData.role.roleId == 'ADMIN' || userData.role.roleId == 'LECTURER') {
         this.isAdminOrLecturer = true;
+      } else {
+        this.fetched = true;
       }
    },
    watch: {
@@ -424,6 +437,7 @@
             .then(response => {
               //and finally gets his lectures
               this.fetchLectures(`api/lectures/${response.data}`);
+              this.fetched = true;
             });
         }
       }
@@ -447,6 +461,7 @@
         })
       },
       fetchLectures(serviceUrl) {
+        this.loadingLectures = true;
         axios.get(serviceUrl)
         .then(response => {
           // JSON responses are automatically parsed.
@@ -467,6 +482,7 @@
             element.lectureDuration = Math.floor((Math.abs(new Date(element.start) - new Date(element.finish))/1000)/60);
             element.open = false;
           });
+          this.loadingLectures = false;
         })
         .catch(e => {
           this.errors.push(e)
@@ -483,6 +499,7 @@
     position: relative;
     padding-top: 30px;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    height: 85vh;
   }
   .day-header {
     margin: 0px 2px 2px 2px;
