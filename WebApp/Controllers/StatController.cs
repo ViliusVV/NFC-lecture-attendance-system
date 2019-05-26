@@ -123,6 +123,34 @@ namespace NFCSystem.Controllers
             return Ok(stats);
         }
 
+        // GET api/stats/getgroupstat/{id}
+        [HttpGet("[action]/{group}")]
+        public async Task<ActionResult<StudentStatDTO>> GetGroupTotalStat(string group)
+        {
+            StudentStatDTO stat = new StudentStatDTO();
+            group = group.Replace("_","/");
+
+            DateTime currentDate = DateTime.Now.Date;
+            // Get all studenss in gruop
+            var students = await _context.Users.Where(s => s.Group == group).Select(w => w.Id).ToListAsync();
+            
+            
+            // Get all timetables till yesterday
+            var timetable = await _context.Timetables.Where(
+                x => students.Contains(x.StudentId)
+                && DateTime.Compare(x.Date.Date, currentDate) < 0)
+                .ToListAsync();
+
+            if (timetable.Count == 0)
+            {
+                return NotFound();
+            }
+
+            stat = GetCourseStat(timetable);
+
+            return Ok(stat);
+        }
+
         public StudentStatDTO GetCourseStat(List<Timetable> timetable)
         {
             StudentStatDTO stat = new StudentStatDTO();

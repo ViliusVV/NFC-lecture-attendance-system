@@ -75,25 +75,23 @@ export default class App extends Vue {
   private itemsStudent = [
     { title: 'Pagrindinis', icon: 'home', link: '/home' },
     { title: 'Tvarkaraštis', icon: 'date_range', link: '/timetable' },
-    { title: 'Statistika', icon: 'timeline', link: '/statistics' },
+    { title: 'Statistika (grafikai)', icon: 'timeline', link: '/statistics' },
     { title: 'Nustatymai', icon: 'settings', link: '/settings' },
   ];
   private itemsAdmin = [
     { title: 'Pagrindinis', icon: 'home', link: '/home' },
-    // { title: 'Gauti duomenis (test)', icon: 'get_app', link: '/fetch-data' },
     { title: 'NFC skenavimai', icon: 'nfc', link: '/nfc-fetch' },
-    // { title: 'Naudotojų sąrašas', icon: 'supervised_user_circle', link: '/user-list' },
     { title: 'Naudotojų sąrašas', icon: 'supervised_user_circle', link: '/getusers' },
     { title: 'Tvarkaraščiai', icon: 'date_range', link: '/timetable' },
     { title: 'Įrenginiai', icon: 'scanner', link: '/device-fetch' },
-    { title: 'Statistika', icon: 'timeline', link: '/statistics' },
+    { title: 'Statistika (grafikai)', icon: 'timeline', link: '/statisticsadmin' },
   ];
   private itemsLecturer = [
     { title: 'Pagrindinis', icon: 'home', link: '/home' },
     { title: 'NFC skenavimai', icon: 'nfc', link: '/nfc-fetch' },
     { title: 'Naudotojų sąrašas', icon: 'supervised_user_circle', link: '/user-list' },
     { title: 'Tvarkaraščiai', icon: 'date_range', link: '/timetable' },
-    { title: 'Statistika', icon: 'timeline', link: '/statistics' },
+    { title: 'Statistika (grafikai)', icon: 'timeline', link: '/statisticsadmin' },
   ];
 
   private myRole()
@@ -147,13 +145,6 @@ export default class App extends Vue {
   private logState()
   {
     this.$forceUpdate();
-    // console.log(this.sss.userName.email);
-    // console.log(this.sss.userName.group);
-    // console.log(this.sss.userName.name);
-    // console.log(this.sss.userName.surname);
-    // console.log(this.sss.userName.id);
-    // console.log(this.sss.userName.uid);
-    // console.log(this.sss.userName.userName);
   }
 
 

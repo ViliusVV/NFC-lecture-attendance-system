@@ -1,6 +1,26 @@
 <template>
   <v-layout>
-    <div style="margin-left: 1%; margin-top: 1%; float:left; clear:left">
+    <div>
+      <v-tooltip bottom>
+          <template v-slot:activator="{ on }">
+            <div v-on="on">
+            <v-autocomplete
+              v-model="select"              
+              :loading="loading"
+              :items="items"
+              :search-input.sync="search"
+              cache-items
+              flat
+              hide-no-data
+              hide-details
+              label="Įveskite studento VIDKO arba vardą ir pavardę"
+            ></v-autocomplete> 
+            </div>             
+          </template>
+        <span>Įveskite studento VIDKO arba vardą ir pavardę</span>
+      </v-tooltip>
+    </div>
+    <div style="margin-left: 1%; margin-top: 1%" v-if="fetched">
         <v-card width="600" class="elevation-4">
           <v-card-title primary-title>
             <h3 align="center" class="headline mb-0">Bendras lankomumas</h3>
@@ -10,7 +30,7 @@
           </div>
         </v-card>
     </div>
-    <div style="margin-left: 1%; margin-top: 1%">
+    <div style="margin-left: 1%; margin-top: 1%" v-if="fetched">
       <v-expansion-panel expand>
         <v-expansion-panel-content v-for="(item,i) in 1" :key="i">
           <template v-slot:header>
@@ -127,7 +147,13 @@ var notneeded = getRequiredLectureType(duom);
 Vue.component('apexchart', VueApexCharts)
 export default {
     data: () => ({
-      // Susikuriu data, dar kitaip vadinama state objekta, i kuri desiu visus paskaitus objektus
+      loading: false,
+      items: [],
+      search: null,
+      select: null,
+      select: null,
+      fetched: false,
+
       attendanceLab: [],
       attendancePractice: [],
       attendanceTheory: [],
@@ -186,10 +212,51 @@ export default {
                 }]
             }
     }),
+    watch: {
+      search (val) {
+        val && val !== this.select && this.querySelections(val);
+
+        if(this.select !== null) {
+          //if student is selected, gets his VIDKO code from input
+          const studentCode = this.select.substring(0, this.select.indexOf(" "));
+          //then gets his id, by his VIDKO code
+          axios.get(`api/userlist/getuserid/${studentCode}`)
+            .then(response => {
+                const headers = { ...authHeader() };
+                axios.get("/api/stats/GetStudentStatTotal/" + response.data ,{ headers: headers})
+                  .then(response => {
+                    this.updateTotalAttendance(response["data"]);
+                })
+                
+                axios.get("/api/stats/GetStudentStat/" + response.data ,{ headers: headers})
+                  .then(response => {
+                    this.updateAttendance(response["data"])
+                  })
+            this.fetched = true;
+            });
+        }
+      }
+    },
+    // sitas metodas iskvieciamas viena karta kai view yra sukuriamas
     methods: {
+      // metodas, kuris pakeicia state objekto reiksme i paduodama per argumenta
+      querySelections (v) {
+        this.loading = true
+        axios.get(`api/userlist/getusers`)
+        .then(response => {
+          const users = response.data
+          users.forEach(element => {
+            this.items.push(element.studentCode + " - " + element.name + " " + element.surname)
+          })
+          this.loading = false
+        })
+      },
       updateAttendance(attendanceArr)
       {
         console.log(attendanceArr);
+        this.attendanceLab.length = 0;
+        this.attendancePractice.length = 0;
+        this.attendanceTheory.length = 0;
         attendanceArr.forEach(element =>
         {
           var objP = 

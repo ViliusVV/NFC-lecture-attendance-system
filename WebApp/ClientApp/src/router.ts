@@ -63,6 +63,11 @@ export const router = new Router({
       path: '*',
       redirect: '/home',
     },
+    {
+      path: '/statisticsadmin',
+      name: 'statisticsadmin',
+      component: () => import(/* webpackChunkName: "fetch-data" */ './views/StatisticsAdmin.vue'),
+    },
   ],
 });
 
