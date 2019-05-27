@@ -131,15 +131,15 @@ namespace UnitTests.TestClasses
 
             var scan = new NFCScan()
             {
-                ScanId = Int32.MaxValue,
-                UID = 164555151,
-                TimeStamp = new DateTime(2019, 5, 7, 9, 10, 0),
+                ScanId = context.NFCScans.Max(x => x.ScanId) + 1,
+                UID = 190704260,
+                TimeStamp = new DateTime(2019, 3, 14, 15, 35, 0),
                 DeviceId = 19
             };
 
             //Act
             await controller.PostScan(scan);
-            var markedAsVisited = context.Timetables.Where(x => x.TimetableId == 257).First().isVisited;
+            var markedAsVisited = context.Timetables.Where(x => x.TimetableId == 5632).First().isVisited;
 
             //Assert
             Assert.True(markedAsVisited);
@@ -147,7 +147,7 @@ namespace UnitTests.TestClasses
             //Deletes created fake scan
             context.NFCScans.Remove(scan);
             //Makes that lecture not visited again
-            context.Timetables.Where(x => x.TimetableId == 257).First().isVisited = false;
+            context.Timetables.Where(x => x.TimetableId == 5632).First().isVisited = false;
             context.SaveChanges();
         }
     }
